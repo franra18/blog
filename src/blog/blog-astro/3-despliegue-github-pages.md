@@ -1,7 +1,7 @@
 ---
 title: 'Despliegue en GitHub Pages'
 pubDate: 2026-08-19
-description: 'En esta entrada hablaré sobre cómo desplegar un sitio construido con Astro en GitHub Pages.'
+description: 'Explico cómo automatizar el despliegue de un sitio Astro en GitHub Pages con GitHub Actions y cómo configurar BASE_URL para evitar rutas rotas al publicarlo bajo un subdirectorio.'
 image: 
     url: 'https://blog.dave.org.uk/wp-content/uploads/2018/08/Screenshot-from-2018-08-26-12-14-24.png'
     alt: 'Icono de GitHub Pages'

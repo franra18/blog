@@ -1,7 +1,7 @@
 ---
 title: 'Curso e integración de TailwindCSS'
 pubDate: 2026-08-11
-description: 'En esta entrada hablaré sobre el curso de Tailwind CSS que he realizado y cómo lo he integrado en mi proyecto de blog.'
+description: 'Comparto lo aprendido en un curso de Tailwind CSS v4 y cómo estoy aplicando sus utilidades para diseñar y mejorar las distintas partes de este blog.'
 image: 
     url: 'https://vabadus.es/images/cache/imagen_nodo/images/articulos/64b524021adc5990918944.png'
     alt: 'Icono de Tailwind CSS'

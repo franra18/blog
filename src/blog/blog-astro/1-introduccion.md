@@ -1,7 +1,7 @@
 ---
 title: 'Introducción al blog'
 pubDate: 2026-08-04
-description: 'Esta es la primera entrada de mi nuevo blog con Astro.'
+description: 'Presento este blog construido con Astro y el camino que quiero seguir para formarme como AI Engineer, aprendiendo desde los fundamentos y desarrollando proyectos propios.'
 image: 
     url: 'https://www.webtutoriales.com/_astro/astro-js.B1AzQgTM_kGNv3.webp'
     alt: 'Icono de la tecnología Astro con fondo estrellado'
