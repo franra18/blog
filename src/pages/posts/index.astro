@@ -1,0 +1,15 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogPost from '../../components/blog/BlogPost.astro';
+
+const allPosts = await getCollection('blog');
+const pageTitle = "Artículos";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+        <p>Bienvenido a mi blog. Aquí compartiré mis pensamientos, experiencias y novedades sobre mi recorrido con Astro y el desarrollo web.</p>
+        <ul class="p-0 m-0 list-none">
+            {allPosts.map((post: any) => (<BlogPost url={`/posts/${post.id}`} title={post.data.title} description={post.data.description} pubDate={post.data.pubDate} tags={post.data.tags}/>))}
+        </ul>
+</BaseLayout>

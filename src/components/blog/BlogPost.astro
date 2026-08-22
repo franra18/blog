@@ -1,6 +1,27 @@
 ---
-const { url, title } = Astro.props;
+const { url, title, description, pubDate, tags } = Astro.props;
 const href = `${import.meta.env.BASE_URL}${url.replace(/^\/+/, '')}`;
 ---
 
-<li><a href={href}>{title}</a></li>
+<li class="hover:bg-amber-100 dark:hover:bg-zinc-900 group py-1 px-5 border-b border-b-zinc-700">
+    <a href={href} class="flex gap-10 max-md:flex-col max-md:gap-3 items-center">
+        <p class="text-black dark:text-white max-md:mb-0">
+            {pubDate.toLocaleDateString()}
+        </p>
+        
+        <div>
+            <p class="text-black dark:text-white text-xl mb-0 group-hover:text-orange-600 max-md:mt-0">
+                {title}
+            </p>
+
+            <p class="text-zinc-500 dark:text-zinc-400 mt-1 w-2xl max-md:w-fit">
+                {description}
+            </p>
+        </div>
+
+        <p class="text-orange-600 font-bold">
+            {tags}
+        </p>
+        
+    </a>
+</li>

@@ -1,9 +1,14 @@
 ---
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.replace(/\/$/, "");
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
+const activeClass = "text-black border-b border-orange-500 dark:text-white";
+const otherClass = "text-zinc-500 hover:text-black dark:text-zinc-500 dark:hover:text-white";
 ---
 
-<div id="main-menu" class="nav-links w-full hidden mb-4">
-    <a href=`${import.meta.env.BASE_URL}`>Inicio</a>
-    <a href=`${import.meta.env.BASE_URL}projects/`>Proyectos</a>
-    <a href=`${import.meta.env.BASE_URL}blog/`>Artículos</a>    
-    <a href=`${import.meta.env.BASE_URL}about/`>Sobre mí</a>
+<div id="main-menu" class="nav-links w-full">
+    <a class={currentPath === basePath ? activeClass : otherClass} href=`${import.meta.env.BASE_URL}`>Inicio</a>
+    <a class={currentPath.startsWith(`${basePath}/projects`) ? activeClass : otherClass} href=`${import.meta.env.BASE_URL}projects/`>Proyectos</a>
+    <a class={currentPath.startsWith(`${basePath}/posts`) ? activeClass : otherClass} href=`${import.meta.env.BASE_URL}posts/`>Artículos</a>
+    <a class={currentPath === `${basePath}/about` ? activeClass : otherClass} href=`${import.meta.env.BASE_URL}about/`>Sobre mí</a>
 </div>
