@@ -3,7 +3,7 @@
 
 @layer base {
     html {
-        @apply bg-amber-50 font-sans dark:bg-zinc-950 dark:text-white
+        @apply bg-amber-50 font-sans dark:bg-zinc-950 dark:text-white selection:bg-orange-500 selection:text-white
     }
 
     body {
