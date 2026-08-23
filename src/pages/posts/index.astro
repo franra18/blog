@@ -1,15 +1,20 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import BlogPost from '../../components/blog/BlogPost.astro';
+import PostRow from '../../components/blog/PostRow.astro';
 
-const allPosts = await getCollection('blog');
+const allPosts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
 const pageTitle = "Artículos";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-        <p>Bienvenido a mi blog. Aquí compartiré mis pensamientos, experiencias y novedades sobre mi recorrido con Astro y el desarrollo web.</p>
+    <div class="mx-60 max-md:mx-auto">
+        <h1>Artículos</h1>
+        <p>Bitácora de desarrollo, análisis a fondo y notas de lo que voy aprendiendo.</p>
         <ul class="p-0 m-0 list-none">
-            {allPosts.map((post: any) => (<BlogPost url={`/posts/${post.id}`} title={post.data.title} description={post.data.description} pubDate={post.data.pubDate} tags={post.data.tags}/>))}
+            {allPosts.map((post: any) => (<PostRow url={`/posts/${post.id}`} title={post.data.title} description={post.data.description} pubDate={post.data.pubDate} tags={post.data.tags}/>))}
         </ul>
+    </div>
 </BaseLayout>

@@ -4,7 +4,7 @@ const href = `${import.meta.env.BASE_URL}${url.replace(/^\/+/, '')}`;
 ---
 
 <li class="hover:bg-amber-100 dark:hover:bg-zinc-900 group py-1 px-5 border-b border-b-zinc-700">
-    <a href={href} class="flex gap-10 max-md:flex-col max-md:gap-3 items-center">
+    <a href={href} class="flex flex-wrap gap-10 max-md:gap-3 items-center">
         <p class="text-black dark:text-white max-md:mb-0">
             {pubDate.toLocaleDateString()}
         </p>
@@ -14,12 +14,12 @@ const href = `${import.meta.env.BASE_URL}${url.replace(/^\/+/, '')}`;
                 {title}
             </p>
 
-            <p class="text-zinc-500 dark:text-zinc-400 mt-1 w-2xl max-md:w-fit">
+            <p class="text-zinc-500 dark:text-zinc-400 mt-1 w-2xl max-md:w-fit max-md:mb-0">
                 {description}
             </p>
         </div>
 
-        <p class="text-orange-600 font-bold">
+        <p class="text-zinc-900 max-md:mt-1 py-0.5 px-3 bg-orange-500 rounded-2xl">
             {tags}
         </p>
         

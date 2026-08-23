@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import BlogPost from '../../components/blog/BlogPost.astro';
+import PostRow from '../../components/blog/PostRow.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
@@ -23,8 +23,10 @@ const { project } = Astro.params;
 const { posts } = Astro.props;
 ---
 <BaseLayout pageTitle={project}>
-  <p>Publicaciones etiquetadas con {project}</p>
-  <ul class="p-0 m-0 list-none">
-    {posts.map((post: any) => <BlogPost url={`/posts/${post.id}`} title={post.data.title} description={post.data.description} pubDate={post.data.pubDate} />)}
-  </ul>
+  <div class="mx-60 max-md:mx-auto">
+    <h1>{project}</h1>
+    <ul class="p-0 m-0 list-none">
+      {posts.map((post: any) => <PostRow url={`/posts/${post.id}`} title={post.data.title} description={post.data.description} pubDate={post.data.pubDate} tags={post.data.tags} />)}
+    </ul>
+  </div>
 </BaseLayout>

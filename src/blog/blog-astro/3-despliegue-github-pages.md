@@ -65,7 +65,7 @@ export default defineConfig({
 
 Una vez declarada la propiedad *base*, Astro expone la variable `import.meta.env.BASE_URL`, que contiene la ruta base configurada.
 
-Tuve que refactorizar los componentes de la interfaz (como `Navigation.astro`, `BlogPost.astro` o las páginas de listados) para anteponer siempre esta variable a las rutas internas:
+Tuve que refactorizar los componentes de la interfaz (como `Navigation.astro`, `PostRow.astro` o las páginas de listados) para anteponer siempre esta variable a las rutas internas:
 
 ```astro
 ---
