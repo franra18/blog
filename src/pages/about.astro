@@ -1,8 +1,17 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import AboutHero from "../components/about/AboutHero.astro";
+import WorkHistory from "../components/about/WorkHistory.astro";
+import TechStack from "../components/about/TechStack.astro";
+import Curriculum from "../components/about/Curriculum.astro";
 
 ---
 
 <BaseLayout>
-
+    <div class="max-w-4xl mx-auto px-6 py-12 flex flex-col gap-8">
+        <AboutHero/>
+        <WorkHistory/>
+        <TechStack/>
+        <Curriculum/>
+    </div>
 </BaseLayout>

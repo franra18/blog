@@ -1,0 +1,40 @@
+---
+const jobs = [
+    {
+        role: "Ingeniero de Software",
+        type: "Prácticas",
+        company: "NTT DATA Europe & Latam",
+        startDate: "Abril 2026",
+        endDate: "Junio 2026",
+        description: "Desarrollé prototipos de software y soluciones de optimización con Java/Spring Boot (MCP con Spring AI) y Python para automatizar procesos con IA y generar PDFs dinámicos bajo metodologías SDD para el proyecto internacional EPO. Certificado en IA generativa (Yellow Belt), lideré el diseño técnico y presenté con éxito los resultados en una demo en vivo ante el equipo corporativo.",
+    },{
+        role: "Graduado en Ingeniería del Software",
+        type: "Educación",
+        company: "Universidad de Málaga",
+        startDate: "2022",
+        endDate: "2026",
+        description: "Proyecto destacado: Desarrollo full-stack de un 'Armario Virtual Inteligente' como TFG usando React Native, FastAPI, Python, MySQL, Gemini LLM y Redux Toolkit. Implementé etiquetado autónomo con visión por computadora, consumo de APIs climáticas en tiempo real y optimización del backend asíncrono.",
+    }
+];
+---
+
+<section>
+    <h2 class="text-2xl font-bold mb-6">Trayectoria</h2>
+    
+    <ul class="flex flex-col gap-4 p-0 m-0 list-none">
+        {jobs.map((job) => (
+            <li class="px-5 py-4 rounded-2xl bg-amber-100 dark:bg-zinc-900 list-none">
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-4">
+                    <h3 class="text-orange-500 text-xl font-bold leading-tight m-0">{job.role}</h3>
+                    <span class="uppercase font-mono text-zinc-600 dark:text-zinc-400 text-sm leading-tight shrink-0">
+                        {job.startDate} - {job.endDate}
+                    </span>
+                </div>
+                
+                <p class="font-bold text-lg mt-1 mb-2">{job.company} · {job.type}</p>
+                <p class="text-zinc-700 dark:text-zinc-300 leading-relaxed">{job.description}</p>
+            </li>
+        ))}
+    </ul>
+</section>
+
