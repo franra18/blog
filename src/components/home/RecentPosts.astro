@@ -9,8 +9,8 @@ const recentPosts = (await getCollection('blog'))
 
 <section>
     <div class="my-10">
-        <h2 class="ml-20 max-md:ml-4">Últimas entradas</h2>
-        <ul class="p-0 m-0 list-none mx-60 max-md:mx-auto">
+        <h2 class="ml-20 max-lg:ml-4">Últimas entradas</h2>
+        <ul class="p-0 m-0 list-none mx-60 max-lg:mx-auto">
             {recentPosts.map((post) => (
                 <PostRow
                     url={`/posts/${post.id}`}
