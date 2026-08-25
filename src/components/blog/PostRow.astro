@@ -1,11 +1,13 @@
 ---
-const { url, title, description, pubDate, tags } = Astro.props;
+const { post } = Astro.props;
+const { title, description, pubDate, tags } = post.data;
+const url = `/posts/${post.id}`
 const href = `${import.meta.env.BASE_URL}${url.replace(/^\/+/, '')}`;
 ---
 
-<li class="hover:bg-amber-100 dark:hover:bg-zinc-900 group py-1 px-5 border-b border-b-zinc-700">
+<li class="hover:bg-amber-100 dark:hover:bg-zinc-900 transition-all group py-1 px-5 border-b border-b-zinc-700">
     <a href={href} class="flex flex-wrap gap-10 max-md:gap-3 items-center">
-        <p class="text-black dark:text-white max-md:mb-0">
+        <p class="text-black font-mono dark:text-white max-md:mb-0">
             {pubDate.toLocaleDateString('es-ES')}
         </p>
         
@@ -19,7 +21,7 @@ const href = `${import.meta.env.BASE_URL}${url.replace(/^\/+/, '')}`;
             </p>
         </div>
 
-        <p class="text-zinc-900 max-md:mt-1 py-0.5 px-3 bg-orange-500 rounded-2xl">
+        <p class="text-amber-100 dark:text-zinc-900 font-mono text-sm font-bold max-md:mt-1 py-0.5 px-3 bg-orange-500 rounded-2xl">
             {tags}
         </p>
         

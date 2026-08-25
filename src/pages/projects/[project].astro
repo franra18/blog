@@ -26,7 +26,7 @@ const { posts } = Astro.props;
   <div class="mx-60 max-md:mx-auto">
     <h1>{project}</h1>
     <ul class="p-0 m-0 list-none">
-      {posts.map((post: any) => <PostRow url={`/posts/${post.id}`} title={post.data.title} description={post.data.description} pubDate={post.data.pubDate} tags={post.data.tags} />)}
+      {posts.map((post: any) => <PostRow post={post} />)}
     </ul>
   </div>
 </BaseLayout>

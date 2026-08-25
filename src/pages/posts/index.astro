@@ -14,7 +14,7 @@ const pageTitle = "Artículos";
         <h1>Artículos</h1>
         <p>Bitácora de desarrollo, análisis a fondo y notas de lo que voy aprendiendo.</p>
         <ul class="p-0 m-0 list-none">
-            {allPosts.map((post: any) => (<PostRow url={`/posts/${post.id}`} title={post.data.title} description={post.data.description} pubDate={post.data.pubDate} tags={post.data.tags}/>))}
+            {allPosts.map((post: any) => (<PostRow post={post}/>))}
         </ul>
     </div>
 </BaseLayout>
