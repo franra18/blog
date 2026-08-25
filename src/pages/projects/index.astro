@@ -1,36 +1,16 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/project/ProjectCard.astro';
 
-const allPosts = await getCollection('blog');
-const tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
+const allProjects = await getCollection('project');
 const pageTitle = "Proyectos";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <div class="tags">
-    {tags.map((project: string) => (
-      <p class="tag"><a href={`${import.meta.env.BASE_URL}projects/${project}`}>{project}</a></p>
+  <div class="flex flex-wrap">
+    {allProjects.map((project: any) => (
+      <ProjectCard project={project}/>
     ))}
   </div>
 </BaseLayout>
-
-<style>
-  a {
-    color: #00539F;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .tag {
-    margin: 0.25em;
-    border: dotted 1px #a1a1a1;
-    border-radius: .5em;
-    padding: .5em 1em;
-    font-size: 1.15em;
-    background-color: #F8FCFD;
-  }
-</style>

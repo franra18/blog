@@ -1,0 +1,14 @@
+---
+const { project } = Astro.props;
+const { name, description, technologies, github, demo } = project.data
+---
+
+<div class="bg-orange-500">
+    <a href=`${import.meta.env.BASE_URL}projects/${name}`>{name}</a>
+    <p>{description}</p>
+    {technologies.map((technology: any) => (
+        <p>{technology}</p> // Hacer TechChip para mostrarlos estilizados
+        ))}
+    <p>{github}</p>
+    <p>{demo}</p>
+</div>
