@@ -2,29 +2,54 @@
 import { getCollection } from 'astro:content';
 import PostRow from '../../components/blog/PostRow.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import TechChip from '../../components/project/TechChip.astro';
 
 export async function getStaticPaths() {
+  const allProjects = await getCollection('project');
   const allPosts = await getCollection('blog');
 
-  const uniqueTags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())]; /* Crea un array de tags únicos a partir de todos los posts. */
+  return allProjects.map((projectEntry) => {
+    const folderName = projectEntry.id.replace(/\/project(\.json)?$/, '');
 
-  return uniqueTags.map((project) => { 
-    const filteredPosts = allPosts.filter((post: any) => post.data.tags.includes(project));
+    const filteredPosts = allPosts.filter((post) =>
+      post.id.startsWith(`${folderName}/`)
+    );
+
     return {
-      params: { project },
-      props: { posts: filteredPosts }
+      params: { project: folderName },
+      props: {
+        project: projectEntry,
+        posts: filteredPosts
+      }
     };
   });
 }
 
-// This function above is used to generate the static paths for each unique project in the blog posts. It retrieves all blog posts, extracts unique projects, and then creates a path for each project along with the corresponding posts that have that project. The result is an array of objects containing the project as a parameter and the filtered posts as props. This allows Astro to generate static pages for each project with the relevant blog posts displayed.
-
-const { project } = Astro.params;
-const { posts } = Astro.props;
+const { project, posts } = Astro.props;
+const { name, description, technologies, demo, github } = project.data;
 ---
-<BaseLayout pageTitle={project}>
+
+<BaseLayout pageTitle={name}>
   <div class="mx-60 max-md:mx-auto">
-    <h1>{project}</h1>
+    <h1 class="text-3xl font-bold mb-2">{name}</h1>
+
+    <h2 class="text-xl font-normal font-mono mb-0">Descripción:</h2>
+    <p class="text-zinc-500 my-0">{description}</p>
+
+    <h2 class="text-xl font-normal font-mono mb-0">Tecnologías:</h2>
+    <div class="flex flex-wrap gap-2 mb-0">
+        {technologies.map((technology: any) => (
+            <TechChip technology={technology} />
+        ))}
+    </div>
+
+    <h2 class="text-xl font-normal font-mono mb-0">Enlaces:</h2>
+    <div class="flex gap-3 mb-5">
+      {demo && (<a href={demo} class="text-orange-500 hover:text-orange-400 font-mono" target="_blank">demo↗</a>)}
+      {github && (<a href={github} class="text-zinc-500 hover:text-inherit font-mono" target="_blank">código↗</a>)}
+    </div>
+
+    <h2 class="text-xl font-normal font-mono mb-0">Artículos:</h2>
     <ul class="p-0 m-0 list-none">
       {posts.map((post: any) => <PostRow post={post} />)}
     </ul>

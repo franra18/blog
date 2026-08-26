@@ -5,7 +5,6 @@ description: 'Presento este blog construido con Astro y el camino que quiero seg
 image: 
     url: 'https://www.webtutoriales.com/_astro/astro-js.B1AzQgTM_kGNv3.webp'
     alt: 'Icono de la tecnología Astro con fondo estrellado'
-tags: ['Blog Astro']
 ---
 
 ¡Bienvenido/a a mi blog! Aquí compartiré mi experiencia en este amplio mundo de la **ingeniería del software** con proyectos, aprendizajes y pensamientos que espero me sirvan para ganarme un puesto digno dentro de este gremio.

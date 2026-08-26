@@ -5,7 +5,6 @@ description: 'Explico cómo automatizar el despliegue de un sitio Astro en GitHu
 image: 
     url: 'https://blog.dave.org.uk/wp-content/uploads/2018/08/Screenshot-from-2018-08-26-12-14-24.png'
     alt: 'Icono de GitHub Pages'
-tags: ['Blog Astro']
 ---
 
 Tras haber estructurado el blog con Astro, el siguiente paso natural era ponerlo en producción. Buscaba una solución sencilla que permitiera automatizar el despliegue con cada cambio en el repositorio, y GitHub Pages encajaba a la perfección con la arquitectura estática del proyecto.

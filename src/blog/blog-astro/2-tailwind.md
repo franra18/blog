@@ -5,7 +5,6 @@ description: 'Comparto lo aprendido en un curso de Tailwind CSS v4 y cómo estoy
 image: 
     url: 'https://vabadus.es/images/cache/imagen_nodo/images/articulos/64b524021adc5990918944.png'
     alt: 'Icono de Tailwind CSS'
-tags: ['Blog Astro']
 ---
 
 Hace unos días terminé el **curso de Tailwind CSS** que imparte el bueno de [midudev](https://www.youtube.com/midudev) y decidí **darle una oportunidad** a este framework para integrarlo en mi proyecto de blog.

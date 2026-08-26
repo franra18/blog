@@ -15,7 +15,6 @@ const blog = defineCollection({
         url: z.string(),
         alt: z.string()
       }),
-      tags: z.array(z.string())
     })
 });
 
@@ -27,6 +26,7 @@ const project = defineCollection({
     technologies: z.array(z.string()),
     github: z.string().optional(),
     demo: z.string().optional(),
+    featured: z.boolean().default(false),
   }),
 });
 

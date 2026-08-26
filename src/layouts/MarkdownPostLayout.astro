@@ -9,15 +9,6 @@ const { frontmatter} = Astro.props;
         <!-- <p><em>{frontmatter.description}</em></p> --> <!-- Descripción del post (de momento oculta) -->
         <img src={frontmatter.image.url} width="100%" alt={frontmatter.image.alt} />
         <p>Francisco Ramírez Cañadas</p>
-
-        <div class="flex flex-wrap">
-            {frontmatter.tags.map((tag: string) => (
-              <p class="m-1 rounded-lg border border-dotted border-zinc-400 px-4 py-2 text-lg">
-                <a href={`${import.meta.env.BASE_URL}projects/${tag}`}>{tag}</a>
-              </p>
-            ))}
-        </div>
-
       <slot /> <!-- MUY IMPORTANTE -->
     </div>
 </BaseLayout>
