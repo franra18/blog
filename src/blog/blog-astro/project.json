@@ -3,5 +3,6 @@
   "description": "Desarrollo de un blog personal construido con Astro y Tailwind CSS.",
   "technologies": ["Astro", "Tailwind CSS", "TypeScript"],
   "github": "https://github.com/franra18/blog",
-  "demo": "https://franra18.github.io/blog"
+  "demo": "https://franra18.github.io/blog",
+  "featured": true
 }

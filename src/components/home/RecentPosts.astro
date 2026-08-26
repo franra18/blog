@@ -9,7 +9,12 @@ const recentPosts = (await getCollection('blog'))
 
 <section>
     <div class="my-10">
-        <h2 class="ml-20 max-lg:ml-4">Últimas entradas</h2>
+        <div class="flex justify-between items-baseline mx-20 max-lg:mx-auto">
+            <h2>Últimos artículos</h2>
+            <a href={`${import.meta.env.BASE_URL}posts`} class="text-zinc-500 hover:text-orange-500 font-mono text-sm">
+            ver todos →
+            </a>
+        </div>
         <ul class="p-0 m-0 list-none mx-60 max-lg:mx-auto">
             {recentPosts.map((post) => (
                 <PostRow post={post}/>

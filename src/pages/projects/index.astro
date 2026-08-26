@@ -8,7 +8,8 @@ const pageTitle = "Proyectos";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <div class="flex flex-wrap">
+  <h1 class="mx-60 max-md:mx-auto">Proyectos</h1>
+  <div class="flex flex-wrap gap-3 justify-center">
     {allProjects.map((project: any) => (
       <ProjectCard project={project}/>
     ))}

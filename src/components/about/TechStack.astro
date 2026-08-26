@@ -1,3 +1,39 @@
 ---
+import TechChip from "../project/TechChip.astro";
+
+const stackSections = [
+  {
+    title: "Lenguajes",
+    technologies: ["Python", "Java", "JavaScript", "C/C++", "SQL", "Haskell"],
+  },
+  {
+    title: "Frameworks",
+    technologies: ["Astro", "FastAPI", "SpringBoot", "Node/Express", "React"],
+  },
+  {
+    title: "Bases de Datos",
+    technologies: ["MongoDB", "MySQL", "SQLite", "H2"],
+  },
+  {
+    title: "Testing",
+    technologies: ["Mockito", "JUnit", "PyTest", "AssertJ", "Postman", "JaCoCo"],
+  },
+];
 ---
 
+<section class="w-full">
+    <h2>Stack</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {stackSections.map(({ title, technologies }) => (
+        <div class="flex flex-col">
+            <h3 class="my-0 uppercase text-orange-500 font-mono">{title}</h3>
+            <div class="flex flex-wrap gap-2">
+                {technologies.map((tech: string) => (
+                    <TechChip technology={tech} />
+                ))}
+            </div>
+        </div>
+        ))}
+    </div>
+</section>
