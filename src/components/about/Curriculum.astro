@@ -1,3 +1,40 @@
 ---
+const cvs = [
+    {
+        lang: "Español",
+        badge: "ES",
+        btnText: "Ver",
+        path: `${import.meta.env.BASE_URL}/assets/cv-spanish.pdf`,
+    },
+    {
+        lang: "English",
+        badge: "EN",
+        btnText: "View",
+        path: `${import.meta.env.BASE_URL}/assets/cv-english.pdf`,
+    },
+];
 ---
 
+<section>
+    <h2>CV</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {cvs.map((cv) => (
+            <div class="flex items-center font-mono justify-between p-4 border border-zinc-300 dark:border-zinc-800 rounded-xl hover:border-orange-500 transition-colors">
+                <div class="flex items-center gap-3">
+                    <span class="px-2 py-1 font-bold text-orange-700 bg-amber-100 dark:bg-zinc-900 rounded">
+                        {cv.badge}
+                    </span>
+                    <span>{cv.lang}</span>
+                </div>
+
+                <a href={cv.path} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3 py-1.5 text-zinc-950 bg-orange-500 rounded-lg hover:bg-orange-400 transition-colors">
+                    <svg class="w-4 h-4 fill-current shrink-0">
+                        <use href={`${import.meta.env.BASE_URL}/assets/sprite.svg#PDF`} />
+                    </svg>
+                    <span>{cv.btnText}</span>
+                </a>
+            </div>
+        ))}
+    </div>
+</section>
