@@ -43,11 +43,15 @@ const { name, description, technologies, demo, github } = project.data;
         ))}
     </div>
 
-    <h2 class="text-xl font-normal font-mono mb-0">Enlaces:</h2>
-    <div class="flex gap-3 mb-5">
-      {demo && (<a href={demo} class="text-orange-500 hover:text-orange-400 font-mono" target="_blank">demo↗</a>)}
-      {github && (<a href={github} class="text-zinc-500 hover:text-inherit font-mono" target="_blank">código↗</a>)}
-    </div>
+    {(demo || github) &&
+      <div>
+        <h2 class="text-xl font-normal font-mono mb-0">Enlaces:</h2>
+        <div class="flex gap-3 mb-5">
+          {demo && (<a href={demo} class="text-orange-500 hover:text-orange-400 font-mono" target="_blank" rel="noopener noreferrer">demo↗</a>)}
+          {github && (<a href={github} class="text-zinc-500 hover:text-inherit font-mono" target="_blank" rel="noopener noreferrer">código↗</a>)}
+        </div>
+      </div>
+    }
 
     <h2 class="text-xl font-normal font-mono mb-0">Artículos:</h2>
     <ul class="p-0 m-0 list-none">

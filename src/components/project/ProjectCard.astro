@@ -21,8 +21,8 @@ const projectUrl = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/projects/${pr
     </div>
     <div class="flex flex-wrap justify-between items-baseline border-t pt-2 border-t-zinc-700">
         <div class="flex gap-3">
-            {demo && (<a href={demo} class="text-orange-500 hover:text-orange-400 font-mono" target="_blank">demo↗</a>)}
-            {github && (<a href={github} class="text-zinc-500 hover:text-inherit font-mono" target="_blank">código↗</a>)}
+            {demo && (<a href={demo} class="text-orange-500 hover:text-orange-400 font-mono" target="_blank" rel="noopener noreferrer">demo↗</a>)}
+            {github && (<a href={github} class="text-zinc-500 hover:text-inherit font-mono" target="_blank" rel="noopener noreferrer">código↗</a>)}
         </div>
         <a href={projectUrl} class="text-zinc-500 hover:text-inherit font-mono">
             artículos →
