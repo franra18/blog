@@ -9,6 +9,7 @@ A personal website featuring a developer portfolio and technical blog built with
 ## 🛠️ Tech Stack
 
 - **Framework:** Astro
+- **Styling:** Tailwind CSS
 - **Package Manager:** `pnpm`
 - **Deployment:** GitHub Pages / GitHub Actions
 - **Languages:** TypeScript, JavaScript, HTML, CSS
