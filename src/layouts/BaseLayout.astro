@@ -6,7 +6,7 @@ import '../styles/global.css';
 const {pageTitle} = Astro.props; /* Importante poner los corchetes alrededor del nombre de la propiedad */
 ---
 
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 	<head>
 		<script is:inline>
 			const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
