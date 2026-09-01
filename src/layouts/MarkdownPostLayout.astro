@@ -1,14 +1,16 @@
 ---
+import ProgressBar from '../components/ui/ProgressBar.astro';
 import BaseLayout from './BaseLayout.astro';
 const { frontmatter} = Astro.props;
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
-    <div class="mx-auto max-w-prose">
-        <p>Publicado el {frontmatter.pubDate.toLocaleDateString('es-ES')}</p>
-        <!-- <p><em>{frontmatter.description}</em></p> --> <!-- Descripción del post (de momento oculta) -->
-        <img src={frontmatter.image.url} width="100%" alt={frontmatter.image.alt} />
-        <p>Francisco Ramírez Cañadas</p>
-      <slot /> <!-- MUY IMPORTANTE -->
-    </div>
+  <ProgressBar/>
+  <div class="mx-auto max-w-prose">
+    <p>Publicado el {frontmatter.pubDate.toLocaleDateString('es-ES')}</p>
+    <!-- <p><em>{frontmatter.description}</em></p> --> <!-- Descripción del post (de momento oculta) -->
+    <img src={frontmatter.image.url} width="100%" alt={frontmatter.image.alt} />
+    <p>Francisco Ramírez Cañadas</p>
+    <slot /> <!-- MUY IMPORTANTE -->
+  </div>
 </BaseLayout>
