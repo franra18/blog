@@ -11,6 +11,8 @@ const { frontmatter} = Astro.props;
     <!-- <p><em>{frontmatter.description}</em></p> --> <!-- Descripción del post (de momento oculta) -->
     <img src={frontmatter.image.url} width="100%" alt={frontmatter.image.alt} />
     <p>Francisco Ramírez Cañadas</p>
-    <slot /> <!-- MUY IMPORTANTE -->
+    <article class="[&_a]:text-orange-500 [&_a]:hover:text-orange-700 [&_a]:hover:underline!">
+      <slot /> <!-- MUY IMPORTANTE -->
+    </article>
   </div>
 </BaseLayout>
