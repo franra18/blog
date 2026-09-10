@@ -7,6 +7,7 @@ const { frontmatter} = Astro.props;
 <BaseLayout pageTitle={frontmatter.title}>
   <ProgressBar/>
   <div class="mx-auto max-w-prose">
+    <h1>{frontmatter.title}</h1>
     <p>Publicado el {frontmatter.pubDate.toLocaleDateString('es-ES')}</p>
     <!-- <p><em>{frontmatter.description}</em></p> --> <!-- Descripción del post (de momento oculta) -->
     <img src={frontmatter.image.url} width="100%" alt={frontmatter.image.alt} />
