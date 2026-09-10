@@ -1,0 +1,7 @@
+{
+  "name": "Servidor MCP de Postulaciones y Preparación Técnica",
+  "description": "Registra postulaciones, analiza brechas de habilidades y prepara entrevistas técnicas a partir de las ofertas guardadas.",
+  "technologies": ["Java", "Spring Boot", "Spring AI", "MCP", "PostgreSQL", "Docker"],
+  
+  "featured": true
+}
