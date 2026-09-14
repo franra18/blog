@@ -16,7 +16,7 @@ const featuredProjects = allProjects
     </a>
   </div>
 
-  <div class="flex flex-wrap gap-3">
+  <div class="grid grid-cols-1 gap-3 lg:grid-cols-3">
     {featuredProjects.map((project) => (
       <ProjectCard project={project} />
     ))}
