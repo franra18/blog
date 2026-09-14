@@ -1,0 +1,6 @@
+{
+  "name": "Aprendizajes",
+  "description": "Notas, herramientas, buenas prácticas y tecnologías exploradas en el día a día.",
+  "technologies": ["RAG"],
+  "featured": true
+}
