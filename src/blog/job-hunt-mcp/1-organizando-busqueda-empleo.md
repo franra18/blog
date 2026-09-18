@@ -21,15 +21,15 @@ Más adelante, también podría preguntarle:
 
 > Tengo una entrevista técnica mañana con esta empresa. ¿Qué preguntas difíciles sobre su stack pueden hacerme según los requisitos que guardamos?
 
-Y, cuando tenga suficientes datos, me gustaría obtener una visión general de mi progreso:
+Y, cuando tenga suficientes datos, obtener una visión general de mi progreso:
 
-> Muestra el embudo de mis candidaturas este mes y las tecnologías que más se repiten en las ofertas que me han rechazado.
+> Muestra el estado actual de mis candidaturas y las tecnologías que más se repiten en las ofertas que me han rechazado.
 
 La clave será que la información no se quede perdida en una conversación. Cada oferta, cada cambio de estado y cada nota importante deberán quedar **guardados para poder consultarlos más adelante**.
 
 ## Qué quiero conseguir
 
-La primera versión será sencilla: **registrar ofertas**, guardar en qué punto está cada proceso y **comparar los requisitos de una oferta con mis conocimientos**. Con eso ya podré detectar qué habilidades debería reforzar antes de una entrevista o de una nueva tanda de candidaturas.
+La primera versión será sencilla: **registrar ofertas**, guardar el estado actual de cada proceso y **comparar las competencias de una oferta con mi perfil**. Con eso ya podré detectar qué habilidades debería reforzar antes de una entrevista o de una nueva tanda de candidaturas.
 
 También quiero que el proyecto me ayude a **encontrar patrones**. Quizá descubra que ciertas tecnologías aparecen constantemente en las ofertas que me interesan, o que siempre tengo dificultades en la misma fase del proceso. Convertir esas observaciones en datos puede ayudarme a estudiar con más intención.
 
