@@ -1,7 +1,8 @@
 ---
 import ProgressBar from '../components/ui/ProgressBar.astro';
+import PostNavigation from '../components/blog/PostNavigation.astro';
 import BaseLayout from './BaseLayout.astro';
-const { frontmatter} = Astro.props;
+const { frontmatter, previousPost, nextPost } = Astro.props;
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
@@ -15,5 +16,7 @@ const { frontmatter} = Astro.props;
     <article class="[&_a]:text-orange-500 [&_a]:hover:text-orange-700 [&_a]:hover:underline!">
       <slot /> <!-- MUY IMPORTANTE -->
     </article>
+
+    <PostNavigation previousPost={previousPost} nextPost={nextPost} />
   </div>
 </BaseLayout>
