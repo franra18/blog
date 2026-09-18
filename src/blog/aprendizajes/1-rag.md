@@ -40,7 +40,7 @@ A cada fragmento se le genera un **embedding**, que es una representación numé
 
 Cuando llega una consulta, el sistema también la convierte en un embedding. Después busca en la base de datos los fragmentos que tienen un significado más parecido.
 
-Los resultados más relevantes se añaden al prompt que recibe el modelo, normalmente con una instrucción parecida a: “responde usando el contexto proporcionado y reconoce si la información no es suficiente”. Finalmente, el modelo redacta una respuesta basada en ese contexto.
+Los resultados más relevantes se añaden al prompt que recibe el modelo, normalmente con una instrucción parecida a: "responde usando el contexto proporcionado y reconoce si la información no es suficiente". Finalmente, el modelo redacta una respuesta basada en ese contexto.
 
 De forma resumida:
 
@@ -93,4 +93,4 @@ RAG me parece una de esas ideas que ayudan a entender mejor qué puede y qué no
 
 La receta, simplificándola mucho, sería: recopilar documentos, dividirlos, generar embeddings, buscar los fragmentos relevantes y utilizarlos como contexto para generar la respuesta.
 
-Ahora me gustaría probarlo con un conjunto pequeño de documentos y medir algo más que la sensación de que “responde bien”. También quiero comprobar qué ocurre cuando la pregunta no tiene respuesta, cómo afectan los distintos tamaños de fragmento y qué metadatos merece la pena conservar. Ahí es donde, probablemente, empieza la parte realmente interesante de construir un sistema RAG.
+Ahora me gustaría probarlo con un conjunto pequeño de documentos y medir algo más que la sensación de que "responde bien". También quiero comprobar qué ocurre cuando la pregunta no tiene respuesta, cómo afectan los distintos tamaños de fragmento y qué metadatos merece la pena conservar. Ahí es donde, probablemente, empieza la parte realmente interesante de construir un sistema RAG.
