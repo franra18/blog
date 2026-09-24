@@ -1,7 +1,7 @@
 ---
 title: 'Cerrando el ciclo: preparación de entrevistas, Docker Compose y lecciones MCP'
 pubDate: 2026-09-18
-description: 'Cerrando el ciclo del copiloto: generación de preguntas de entrevista contextualizadas, ejecución local con Docker Compose y reflexiones tras construir un servidor MCP real.'
+description: 'Generación de preguntas de entrevista contextualizadas, ejecución local con Docker Compose y reflexiones tras construir un servidor MCP real.'
 image:
   url: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85'
   alt: 'Equipo reunido alrededor de una mesa durante una conversación de trabajo'
