@@ -5,7 +5,13 @@ import BaseLayout from './BaseLayout.astro';
 const { frontmatter, previousPost, nextPost } = Astro.props;
 ---
 
-<BaseLayout pageTitle={frontmatter.title}>
+<BaseLayout
+  pageTitle={frontmatter.title}
+  description={frontmatter.description}
+  image={frontmatter.image}
+  type="article"
+  publishedTime={frontmatter.pubDate}
+>
   <ProgressBar/>
   <div class="mx-auto max-w-prose">
     <h1>{frontmatter.title}</h1>
