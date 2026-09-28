@@ -1,16 +1,31 @@
 ---
+import CommandWindow from './CommandWindow.astro';
 ---
 
-<div class="ml-20 mr-125 max-lg:ml-4 max-lg:mr-4">
-    <p class="text-orange-500 -mb-7 font-mono">INGENIERO DE SOFTWARE · MÁLAGA</p>
-	<h1 class="text-6xl">Construyo software y documento el camino.</h1>
-	<p class="text-lg text-zinc-700 dark:text-zinc-300">Soy <strong>Francisco Ramírez,</strong> ingeniero de software. Me centro en resolver problemas mediante código y en entender a fondo cómo funcionan los sistemas por dentro. Este espacio es mi cuaderno de bitácora: proyectos personales, desgloses técnicos y lo que voy aprendiendo mientras construyo.</p>
-	<div class="flex gap-4">
-		<a href=`${import.meta.env.BASE_URL}posts/` class="p-3 bg-orange-500 text-zinc-950 rounded-lg hover:bg-orange-400">
-			Leer los artículos →
-		</a> 
-		<a href=`${import.meta.env.BASE_URL}projects/` class="p-3 text-inherit border border-zinc-700 rounded-lg hover:border-orange-400 hover:text-orange-500">
-			Ver proyectos
-		</a>  
-	</div>  
-</div>
+<section class="mx-20 grid items-center gap-12 pt-0 max-lg:mx-auto lg:grid-cols-2 lg:gap-16 lg:pt-0">
+	<div>
+		<p class="font-mono text-orange-500">
+			INGENIERO DE SOFTWARE · MÁLAGA
+		</p>
+
+		<h1 class="my-0 max-w-3xl text-6xl font-bold leading-none tracking-tight sm:text-7xl lg:text-8xl">
+			Construyo software y documento el camino.
+		</h1>
+
+		<p class="mt-8 max-w-2xl text-lg leading-relaxed text-zinc-700 dark:text-zinc-300">
+			Me centro en resolver problemas mediante código y entender cómo funcionan los sistemas. Este espacio es mi cuaderno de bitácora: proyectos personales, desgloses técnicos y lo que aprendo mientras construyo.
+		</p>
+
+		<div class="mt-10 flex flex-wrap gap-4">
+			<a href=`${import.meta.env.BASE_URL}posts/` class="rounded-lg bg-orange-500 p-3 text-zinc-950 hover:bg-orange-400">
+				Leer los artículos →
+			</a>
+			<a href=`${import.meta.env.BASE_URL}projects/` class="rounded-lg border border-zinc-700 p-3 text-inherit hover:border-orange-400 hover:text-orange-500">
+				Ver proyectos
+			</a>
+		</div>
+	</div>
+	<div class="flex justify-center lg:justify-end">
+		<CommandWindow />
+	</div>
+</section>
