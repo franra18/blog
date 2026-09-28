@@ -1,31 +1,36 @@
 ---
 const { post } = Astro.props;
-const { title, description, pubDate } = post.data;
+const { title, description, pubDate, image } = post.data;
 const url = `/posts/${post.id}`
 const href = `${import.meta.env.BASE_URL}${url.replace(/^\/+/, '')}`;
-const projectName = post.id.includes('/') ? post.id.split('/')[0] : null;
+const projectName: string | null = post.id.includes('/') ? post.id.split('/')[0] : null;
+const projectLabel = projectName?.split('-').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 ---
 
-<li class="hover:bg-amber-100 dark:hover:bg-zinc-900 transition-all group py-1 px-5 border-b border-b-zinc-700">
-    <a href={href} class="flex flex-wrap gap-10 max-lg:gap-3 items-center max-lg:flex-col">
-        <p class="text-black font-mono dark:text-white max-lg:mb-0 w-28 shrink-0">
-            {pubDate.toLocaleDateString('es-ES')}
-        </p>
-        
-        <div class="flex-1 min-w-0">
-            <p class="text-black dark:text-white text-xl mb-0 group-hover:text-orange-600 max-lg:mt-0">
+<li class="group border-t border-zinc-700 transition-colors hover:bg-amber-100 dark:hover:bg-zinc-900">
+    <a href={href} class="flex items-center gap-7 px-3 py-3 max-md:gap-4 max-md:px-2">
+        <img src={image.url} alt={image.alt} class="h-28 w-52 shrink-0 rounded-md object-cover max-md:h-24 max-md:w-36" />
+
+        <div class="min-w-0 flex-1">
+            <p class="mb-1 text-lg text-black dark:text-white group-hover:text-orange-600 max-md:text-base">
                 {title}
             </p>
 
-            <p class="text-zinc-500 dark:text-zinc-400 mt-1 max-lg:mb-0">
+            <p class="mb-2 line-clamp-2 text-sm text-zinc-500 dark:text-zinc-400">
                 {description}
             </p>
+
+            <div class="flex items-center gap-3 text-xs text-zinc-500 dark:text-zinc-400">
+                <time datetime={pubDate.toISOString()}>{pubDate.toLocaleDateString('es-ES')}</time>
+
+                {projectName && (
+                    <span class="rounded-full bg-orange-500 px-2 py-0.5 font-mono font-bold text-amber-100 dark:text-zinc-900">
+                        {projectLabel}
+                    </span>
+                )}
+            </div>
         </div>
 
-        {projectName && (
-            <p class="text-amber-100 dark:text-zinc-900 font-mono uppercase text-sm font-bold max-lg:mt-1 py-0.5 px-3 bg-orange-500 rounded-2xl ml-auto">
-                {projectName}
-            </p>
-        )}
+        <span aria-hidden="true" class="shrink-0 text-xl text-zinc-400 transition-transform group-hover:translate-x-1">&rarr;</span>
     </a>
 </li>
