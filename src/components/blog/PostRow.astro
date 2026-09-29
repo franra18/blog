@@ -8,11 +8,11 @@ const projectLabel = projectName?.split('-').map((word) => word.charAt(0).toUppe
 ---
 
 <li class="group border-t border-zinc-700 transition-colors hover:bg-amber-100 dark:hover:bg-zinc-900">
-    <a href={href} class="flex items-center gap-7 px-3 py-3 max-md:gap-4 max-md:px-2">
-        <img src={image.url} alt={image.alt} class="h-28 w-52 shrink-0 rounded-md object-cover max-md:h-24 max-md:w-36" />
+    <a href={href} class="flex flex-col gap-3 px-2 py-4 md:flex-row md:items-center md:gap-7 md:px-3">
+        <img src={image.url} alt={image.alt} class="aspect-video w-full rounded-md object-cover md:w-52 md:shrink-0" />
 
         <div class="min-w-0 flex-1">
-            <p class="mb-1 text-lg text-black dark:text-white group-hover:text-orange-600 max-md:text-base">
+            <p class="mb-1 text-xl text-black dark:text-white group-hover:text-orange-600 max-md:text-lg">
                 {title}
             </p>
 
@@ -31,6 +31,6 @@ const projectLabel = projectName?.split('-').map((word) => word.charAt(0).toUppe
             </div>
         </div>
 
-        <span aria-hidden="true" class="shrink-0 text-xl text-zinc-400 transition-transform group-hover:translate-x-1">&rarr;</span>
+        <span aria-hidden="true" class="self-end text-xl text-zinc-400 transition-transform group-hover:translate-x-1 md:shrink-0 md:self-auto">&rarr;</span>
     </a>
 </li>
