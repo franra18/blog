@@ -7,18 +7,18 @@ const { name, type, description, image, technologies, github, demo } = project.d
 
 const projectSlug = project.id.replace(/\/project\.json$/, '').replace('/project', '');
 const projectUrl = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/projects/${projectSlug}`;
-const imageUrl = `${import.meta.env.BASE_URL}${image.replace(/^\//, '')}`;
+const imageUrl = image;
 ---
 
 <article class="group flex h-full flex-col rounded-xl border border-zinc-300 bg-amber-50 p-4 transition-colors hover:border-orange-500 dark:border-zinc-800 dark:bg-zinc-950">
     <p class="-mt-1 mb-2 font-mono text-xs uppercase tracking-widest text-orange-600 dark:text-orange-500">{type}</p>
     <a href={projectUrl} class="text-inherit text-2xl font-bold leading-tight hover:text-orange-500">
-            {name}
+        {name}
     </a>
     <p class="mt-2 mb-4 text-base leading-snug text-zinc-600 dark:text-zinc-400">{description}</p>
 
     <a href={projectUrl} class="mb-4 block overflow-hidden rounded-lg border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900" aria-label={`Ver proyecto ${name}`}>
-        <img src={imageUrl} alt={`Vista previa de ${name}`} class="h-56 w-full object-cover transition-transform duration-300 group-hover:scale-[1.02] lg:h-64" loading="lazy" />
+        <img src={imageUrl} alt={`Vista previa de ${name}`} class="block aspect-video w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" loading="lazy" />
     </a>
 
     <div class="mt-auto">
