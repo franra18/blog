@@ -24,9 +24,9 @@ const stackSections = [
 <section class="w-full">
     <h2>Stack</h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 gap-3 md:grid-cols-2">
         {stackSections.map(({ title, technologies }) => (
-        <div class="flex flex-col">
+        <div class="flex flex-col rounded-2xl bg-amber-100 p-5 dark:bg-zinc-900">
             <h3 class="my-0 uppercase text-orange-500 font-mono">{title}</h3>
             <div class="flex flex-wrap gap-2">
                 {technologies.map((tech: string) => (

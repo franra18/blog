@@ -29,34 +29,50 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@view-transition {
+    navigation: auto;
+}
+
+::view-transition-old(nav-indicator),
+::view-transition-new(nav-indicator) {
+    animation-duration: 350ms;
+    animation-timing-function: ease-in-out;
+}
+
 @layer components {
     /* Navigation styles */
 
     .nav-links a {
-        @apply py-2 text-lg mx-2 font-bold
+        @apply relative mx-2 shrink-0 py-2 text-lg font-bold
+
+    }
+
+    .nav-links a.is-active::after {
+        content: '';
+        view-transition-name: nav-indicator;
+        @apply absolute right-0 bottom-0 left-0 h-px bg-orange-500;
 
     }
 
     .nav-links {
-        @apply hidden
+        @apply flex min-w-0 flex-1 items-center overflow-x-auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
     }
 
-    .nav-links.is-open {
-        @apply flex flex-col items-center
+    .nav-links::-webkit-scrollbar {
+        display: none;
     }
 
     @media screen and (min-width: 636px) {
         .nav-links {
-            @apply ml-0.5 block static w-auto bg-transparent 
+            @apply ml-0.5 flex-none overflow-visible
         }
 
         .nav-links a {
             @apply inline-block px-3
         }
 
-        .menu {
-            @apply hidden
-        }
     }
 
     a {

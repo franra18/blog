@@ -2,11 +2,11 @@
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.replace(/\/$/, "");
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
-const activeClass = "text-black border-b border-orange-500 dark:text-white";
+const activeClass = "text-black dark:text-white is-active";
 const otherClass = "text-zinc-500 hover:text-black dark:text-zinc-500 dark:hover:text-white";
 ---
 
-<div id="main-menu" class="nav-links w-full">
+<div class="nav-links">
     <a class={currentPath === basePath ? activeClass : otherClass} href=`${import.meta.env.BASE_URL}`>Inicio</a>
     <a class={currentPath.startsWith(`${basePath}/projects`) ? activeClass : otherClass} href=`${import.meta.env.BASE_URL}projects/`>Proyectos</a>
     <a class={currentPath.startsWith(`${basePath}/posts`) ? activeClass : otherClass} href=`${import.meta.env.BASE_URL}posts/`>Artículos</a>
