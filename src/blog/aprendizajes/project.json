@@ -1,6 +1,8 @@
 {
   "name": "Aprendizajes",
+  "type": "Notas · Aprendizaje",
   "description": "Notas, herramientas, buenas prácticas y tecnologías exploradas en el día a día.",
+  "image": "assets/captura-inicio.png",
   "technologies": ["RAG"],
   "featured": true
 }

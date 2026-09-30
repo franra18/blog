@@ -1,6 +1,8 @@
 {
   "name": "Servidor MCP de candidaturas de trabajo",
+  "type": "Backend",
   "description": "Registra solicitudes de empleo, analiza brechas de habilidades y prepara entrevistas técnicas a partir de las ofertas guardadas.",
+  "image": "assets/captura-inicio.png",
   "technologies": ["Java", "Spring Boot", "Spring AI", "MCP", "PostgreSQL", "Docker"],
   "github": "https://github.com/franra18/job-hunt-copilot-mcp",
   "featured": true

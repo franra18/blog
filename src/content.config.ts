@@ -22,7 +22,9 @@ const project = defineCollection({
   loader: glob({ pattern: '**/project.json', base: './src/blog' }),
   schema: z.object({
     name: z.string(),
+    type: z.string(),
     description: z.string(),
+    image: z.string(),
     technologies: z.array(z.string()),
     github: z.string().optional(),
     demo: z.string().optional(),
