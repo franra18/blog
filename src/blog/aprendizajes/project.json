@@ -1,6 +1,8 @@
 {
   "name": "Aprendizajes",
+  "type": "Notas · Aprendizaje",
   "description": "Notas, herramientas, buenas prácticas y tecnologías exploradas en el día a día.",
+  "image": "https://www.universidadunie.com/sites/universidadunie.com/files/images/aprendizaje.jpg",
   "technologies": ["RAG"],
   "featured": true
 }

@@ -1,6 +1,8 @@
 {
   "name": "Blog Astro",
+  "type": "Web · Blog",
   "description": "Desarrollo de un blog personal construido con Astro y Tailwind CSS.",
+  "image": "https://uncommunitymanager.es/wp-content/uploads/ser-blogger-1.jpg",
   "technologies": ["Astro", "Tailwind CSS", "TypeScript"],
   "github": "https://github.com/franra18/blog",
   "demo": "https://franra18.github.io/blog",
