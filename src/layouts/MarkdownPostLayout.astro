@@ -11,6 +11,7 @@ const { frontmatter, previousPost, nextPost } = Astro.props;
   image={frontmatter.image}
   type="article"
   publishedTime={frontmatter.pubDate}
+  hideHeaderOnScroll
 >
   <ProgressBar/>
   <div class="mx-auto max-w-prose">

@@ -12,6 +12,7 @@ const {
 	},
 	type = 'website',
 	publishedTime,
+	hideHeaderOnScroll,
 } = Astro.props;
 const pageUrl = Astro.url.href;
 const imageUrl = new URL(image.url, Astro.url).href;
@@ -41,7 +42,7 @@ const imageUrl = new URL(image.url, Astro.url).href;
 		<title>{pageTitle} - Francisco Ramírez</title>
 	</head>
 	<body>
-		<Header />
+		<Header hideOnScroll={hideHeaderOnScroll} />
         <slot /> <!-- slots allow you to inject child content written between the opening and closing tags of the layout -->
 		<Footer />
 	</body>
