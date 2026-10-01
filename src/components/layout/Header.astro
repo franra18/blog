@@ -3,12 +3,59 @@ import Navigation from './Navigation.astro';
 import ThemeIcon from '../ui/ThemeIcon.astro';
 ---
 
-<header class="border-b border-zinc-700 mb-10 pb-4">
+<header id="site-header" class="site-header border-b border-zinc-700 mb-10 pb-4">
     <nav>
-        <div class="flex justify-end items-center">
+        <div class="nav-shell relative flex justify-center">
             <Navigation />
-            <div class="h-10 w-px bg-zinc-700 mx-4"></div>
-            <ThemeIcon />            
+            <div class="nav-controls absolute right-0 flex items-center">
+                <div class="h-10 w-px bg-zinc-700 mx-4"></div>
+                <ThemeIcon />
+            </div>
         </div>
-    </nav>    
+    </nav>
 </header>
+
+<style>
+    .site-header {
+        position: sticky;
+        top: 1rem;
+        z-index: 10;
+    }
+
+    .nav-shell {
+        transition: padding 200ms ease, background-color 200ms ease;
+    }
+
+    .site-header.is-scrolled {
+        border-bottom-color: transparent;
+    }
+
+    .site-header.is-scrolled .nav-shell {
+        width: fit-content;
+        margin-inline: auto;
+        padding: 0.25rem 0.75rem;
+        border: 1px solid rgb(113 113 122 / 0.45);
+        border-radius: 9999px;
+        background-color: rgb(255 251 235 / 0.9);
+        backdrop-filter: blur(8px);
+    }
+
+    :global(.dark) .site-header.is-scrolled .nav-shell {
+        background-color: rgb(9 9 11 / 0.9);
+    }
+
+    .site-header.is-scrolled .nav-controls {
+        display: none;
+    }
+</style>
+
+<script>
+    const siteHeader = document.getElementById('site-header');
+
+    const updateHeader = () => {
+        siteHeader?.classList.toggle('is-scrolled', window.scrollY > 24);
+    };
+
+    updateHeader();
+    window.addEventListener('scroll', updateHeader, { passive: true });
+</script>
