@@ -8,7 +8,7 @@
     }
 
     html {
-        @apply bg-amber-50 font-sans dark:bg-zinc-950 dark:text-white selection:bg-orange-500 selection:text-white
+        @apply bg-amber-50 font-sans dark:bg-zinc-950 dark:text-white selection:bg-orange-500 selection:text-white [scrollbar-color:#fde68a_transparent] dark:[scrollbar-color:#18181b_transparent];
     }
 
     body {
@@ -43,7 +43,7 @@
     /* Navigation styles */
 
     .nav-links a {
-        @apply relative mx-2 shrink-0 py-2 text-lg font-bold
+        @apply relative mx-2 shrink-0 pt-2 mb-2 text-lg font-bold
 
     }
 
