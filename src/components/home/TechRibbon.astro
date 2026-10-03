@@ -1,0 +1,41 @@
+---
+const technologies = [
+    { name: 'Astro', icon: 'Astro', viewBox: '0 0 85 107' },
+    { name: 'Java', icon: 'Java', viewBox: '0 0 256 346' },
+    { name: 'PostgreSQL', icon: 'PostgreSQL', viewBox: '0 0 432.071 445.383', themeLogo: true },
+    { name: 'MongoDB', icon: 'MongoDB', viewBox: '0 0 120 257' },
+    { name: 'Python', icon: 'Python' },
+    { name: 'JavaScript', icon: 'JavaScript', themeLogo: true },
+    { name: 'Tailwind CSS', icon: 'TailwindCSS' },
+    { name: 'Docker', icon: 'Docker' },
+    { name: 'FastAPI', icon: 'FastAPI' },
+    { name: 'Spring', icon: 'Spring' },
+    { name: 'MCP', icon: 'MCP', viewBox: '0 0 24 24' },
+    { name: 'Git', icon: 'Git', viewBox: '0 0 256 256' },
+];
+
+const ribbonTechnologies = [...technologies, ...technologies];
+---
+
+<section class="group relative w-full overflow-hidden border-y border-zinc-700/30 before:pointer-events-none before:absolute before:inset-y-0 before:inset-s-0 before:z-10 before:h-full before:w-16 before:bg-[linear-gradient(to_right,rgb(255_251_235),transparent)] after:pointer-events-none after:absolute after:inset-y-0 after:inset-e-0 after:z-10 after:h-full after:w-16 after:bg-[linear-gradient(to_left,rgb(255_251_235),transparent)] dark:before:bg-[linear-gradient(to_right,rgb(9_9_11),transparent)] dark:after:bg-[linear-gradient(to_left,rgb(9_9_11),transparent)]" aria-label="Tecnologías que uso">
+    <div class="flex w-max items-center animate-[tech-ribbon-scroll_42s_linear_infinite] group-hover:[animation-play-state:paused] motion-reduce:animate-none">
+        {[false, true].map((isDuplicate) => (
+            <div class="flex shrink-0 items-center" aria-hidden={isDuplicate}>
+                {ribbonTechnologies.map(({ name, icon, viewBox = '0 0 64 64', themeLogo = false }) => (
+                    <div class="flex h-24 w-24 shrink-0 items-center justify-center sm:h-28 sm:w-28" title={name}>
+                        <svg viewBox={viewBox} class:list={{ 'size-10 transition-transform duration-150 hover:scale-[1.15] motion-reduce:transition-none motion-reduce:hover:scale-100': true, 'brightness-0 dark:brightness-0 dark:invert': !themeLogo, 'dark:invert': themeLogo }} role="img" aria-label={name}>
+                            <use href={`${import.meta.env.BASE_URL}assets/sprite.svg#${icon}`} />
+                        </svg>
+                    </div>
+                ))}
+            </div>
+        ))}
+    </div>
+</section>
+
+<style>
+    @keyframes tech-ribbon-scroll {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+    }
+</style>
