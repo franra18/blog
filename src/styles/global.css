@@ -12,7 +12,7 @@
     }
 
     body {
-        @apply mx-auto w-full p-4 leading-normal font-serif
+        @apply mx-auto w-full leading-normal font-serif
     }
 
     * {
