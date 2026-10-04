@@ -1,20 +1,15 @@
 ---
 import Navigation from './Navigation.astro';
-import ThemeIcon from '../ui/ThemeIcon.astro';
 const { hideOnScroll } = Astro.props;
 ---
 
 <header
     id="site-header"
-    class:list={['site-header border-b border-zinc-700 pb-4', { 'hide-on-scroll': hideOnScroll }]}
+    class:list={['site-header pb-4', { 'hide-on-scroll': hideOnScroll }]}
 >
     <nav>
         <div class="nav-shell relative flex justify-center">
             <Navigation />
-            <div class="nav-controls absolute right-0 flex items-center">
-                <div class="h-10 w-px bg-zinc-700 mx-4"></div>
-                <ThemeIcon />
-            </div>
         </div>
     </nav>
 </header>
@@ -56,9 +51,6 @@ const { hideOnScroll } = Astro.props;
         background-color: rgb(9 9 11 / 0.9);
     }
 
-    .site-header.is-scrolled .nav-controls {
-        display: none;
-    }
 </style>
 
 <script>
