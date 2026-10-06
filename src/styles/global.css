@@ -2,17 +2,16 @@
 @import "tailwindcss/utilities.css" layer(utilities);
 
 @layer base {
-
     html {
         @apply bg-amber-50 font-sans dark:bg-zinc-950 dark:text-white selection:bg-orange-500 selection:text-white [scrollbar-color:#fde68a_transparent] dark:[scrollbar-color:#18181b_transparent];
     }
 
     body {
-        @apply m-0 w-full leading-normal font-serif
+        @apply m-0 w-full leading-normal font-serif;
     }
 
     * {
-        @apply box-border
+        @apply box-border;
     }
 }
 
@@ -39,15 +38,13 @@
     /* Navigation styles */
 
     .nav-links a {
-        @apply relative mx-2 shrink-0 pt-2 mb-2 text-lg font-bold inline-block
-
+        @apply relative mx-2 shrink-0 pt-2 mb-2 text-lg font-bold inline-block;
     }
 
     .nav-links a.is-active::after {
         content: '';
         view-transition-name: nav-indicator;
         @apply absolute right-0 bottom-0 left-0 h-px bg-orange-500;
-
     }
 
     .nav-links {
@@ -62,17 +59,35 @@
 
     @media screen and (min-width: 636px) {
         .nav-links {
-            @apply ml-0.5 flex-none overflow-visible
+            @apply ml-0.5 flex-none overflow-visible;
         }
 
         .nav-links a {
-            @apply inline-block px-3
+            @apply inline-block px-3;
         }
-
     }
 
     a {
-        @apply no-underline
+        @apply no-underline;
     }
+}
 
+/* Transición Circular de Tema (View Transitions API) */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+    z-index: 9999;
+}
+
+::view-transition-old(root) {
+    z-index: 1;
+}
+
+::view-transition-image-pair(root) {
+    isolation: isolate;
 }
