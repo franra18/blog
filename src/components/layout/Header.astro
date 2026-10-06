@@ -3,12 +3,9 @@ import Navigation from './Navigation.astro';
 const { hideOnScroll } = Astro.props;
 ---
 
-<header
-    id="site-header"
-    class:list={['site-header pb-4', { 'hide-on-scroll': hideOnScroll }]}
->
+<header id="site-header" class:list={['site-header pb-4 pointer-events-none', { 'hide-on-scroll': hideOnScroll }]}>
     <nav>
-        <div class="nav-shell relative flex justify-center">
+        <div class="nav-shell relative flex justify-center pointer-events-auto">
             <Navigation />
         </div>
     </nav>
@@ -18,7 +15,7 @@ const { hideOnScroll } = Astro.props;
     .site-header {
         position: sticky;
         top: 1rem;
-        z-index: 10;
+        z-index: 50;
     }
 
     .site-header.hide-on-scroll {
@@ -30,19 +27,22 @@ const { hideOnScroll } = Astro.props;
     }
 
     .nav-shell {
-        transition: padding 200ms ease, background-color 200ms ease;
-    }
-
-    .site-header.is-scrolled {
-        border-bottom-color: transparent;
+        width: fit-content;
+        margin-inline: auto;
+        border-radius: 9999px;
+        border: 1px solid transparent;
+        background-color: transparent;
+        backdrop-filter: blur(0px);
+        transition:
+            padding 200ms ease,
+            background-color 200ms ease,
+            border-color 200ms ease,
+            backdrop-filter 200ms ease;
     }
 
     .site-header.is-scrolled .nav-shell {
-        width: fit-content;
-        margin-inline: auto;
         padding: 0.25rem 0.75rem;
-        border: 1px solid rgb(113 113 122 / 0.45);
-        border-radius: 9999px;
+        border-color: rgb(113 113 122 / 0.45);
         background-color: rgb(255 251 235 / 0.9);
         backdrop-filter: blur(8px);
     }
@@ -50,7 +50,6 @@ const { hideOnScroll } = Astro.props;
     :global(.dark) .site-header.is-scrolled .nav-shell {
         background-color: rgb(9 9 11 / 0.9);
     }
-
 </style>
 
 <script>

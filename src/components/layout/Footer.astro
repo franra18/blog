@@ -2,7 +2,19 @@
 import Socials from './Socials.astro';
 ---
 
-<footer class="border-t border-zinc-700 flex items-center justify-between pt-5 mt-15 mx-10">
-	<p class="text-zinc-700 dark:text-zinc-300">© {new Date().getFullYear()} Francisco Ramírez Cañadas</p>
-	<Socials />
+<footer class="mt-24 border-t border-zinc-200/80 py-8 font-mono text-xs dark:border-zinc-800">
+  <div class="mx-auto flex max-w-4xl flex-col items-start justify-between gap-4 px-4 sm:flex-row sm:items-center sm:px-6">
+    <div class="flex items-center gap-2 text-zinc-600 dark:text-zinc-400">
+      <span class="font-bold text-orange-600 dark:text-orange-400">❯</span>
+      <span>whoami</span>
+      <span class="text-zinc-400 dark:text-zinc-600">→</span>
+      <span class="text-zinc-900 dark:text-zinc-100 font-medium">Francisco Ramírez Cañadas</span>
+      <span class="inline-block animate-pulse text-orange-500">_</span>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <span class="text-[11px] text-zinc-400 dark:text-zinc-600">© {new Date().getFullYear()}</span>
+      <Socials />
+    </div>
+  </div>
 </footer>

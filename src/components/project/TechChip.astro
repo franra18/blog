@@ -2,4 +2,7 @@
 const { technology } = Astro.props;
 ---
 
-<p class="mb-0 rounded-2xl border border-zinc-400 bg-amber-50 px-2 text-xs dark:border-zinc-700 dark:bg-zinc-950">{ technology }</p>
+<span class="inline-flex items-center gap-1.5 rounded-full border border-zinc-300/80 bg-white/50 px-2.5 py-0.5 font-mono text-[11px] font-medium text-zinc-700 shadow-[0_1px_2px_rgba(0,0,0,0.02)] transition-colors hover:border-orange-400/70 hover:bg-white hover:text-orange-700 dark:border-zinc-800 dark:bg-zinc-900/60 dark:text-zinc-300 dark:hover:border-zinc-700">
+  <span class="h-1.5 w-1.5 rounded-full bg-orange-500/40 dark:bg-orange-400/40"></span>
+  <span>{technology}</span>
+</span>

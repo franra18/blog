@@ -4,7 +4,7 @@ import Hero from '../components/home/Hero2.astro';
 import FeaturedProjects from '../components/home/FeaturedProjects.astro';
 import RecentPosts from '../components/home/RecentPosts.astro';
 import TechRibbon from '../components/home/TechRibbon.astro';
-import Timeline from '../components/about/Timeline.astro';
+import Timeline from '../components/home/Timeline.astro';
 
 const pageTitle = "Inicio";
 ---
@@ -12,7 +12,7 @@ const pageTitle = "Inicio";
 <BaseLayout pageTitle={pageTitle}>
 	<Hero />
 	<TechRibbon/>
-	
+
 	<div class="mx-40 max-md:mx-5">
 		<Timeline/>
 		<FeaturedProjects />

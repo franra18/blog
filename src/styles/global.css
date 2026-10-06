@@ -2,10 +2,6 @@
 @import "tailwindcss/utilities.css" layer(utilities);
 
 @layer base {
-    html,
-    html * {
-        @apply transition-colors duration-200 ease-in-out;
-    }
 
     html {
         @apply bg-amber-50 font-sans dark:bg-zinc-950 dark:text-white selection:bg-orange-500 selection:text-white [scrollbar-color:#fde68a_transparent] dark:[scrollbar-color:#18181b_transparent];
@@ -43,7 +39,7 @@
     /* Navigation styles */
 
     .nav-links a {
-        @apply relative mx-2 shrink-0 pt-2 mb-2 text-lg font-bold
+        @apply relative mx-2 shrink-0 pt-2 mb-2 text-lg font-bold inline-block
 
     }
 
@@ -55,7 +51,7 @@
     }
 
     .nav-links {
-        @apply flex min-w-0 flex-1 items-center overflow-x-auto;
+        @apply items-center;
         scrollbar-width: none;
         -ms-overflow-style: none;
     }

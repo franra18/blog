@@ -15,7 +15,7 @@ const recentPosts = (await getCollection('blog'))
             ver todos →
             </a>
         </div>
-        <ul class="p-0 m-0 list-none mx-40 max-lg:mx-auto">
+        <ul class="p-0 m-0 list-none mx-40 space-y-3 max-lg:mx-auto">
             {recentPosts.map((post) => (
                 <PostRow post={post}/>
             ))}
