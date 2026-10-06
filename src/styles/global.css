@@ -1,22 +1,42 @@
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities);
 
-@layer base {
-    html,
-    html * {
-        @apply transition-colors duration-200 ease-in-out;
-    }
+/* Scrollbar personalizado sin flechas */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
 
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #fde68a;
+    border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background-color: #18181b;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+@layer base {
     html {
-        @apply bg-amber-50 font-sans dark:bg-zinc-950 dark:text-white selection:bg-orange-500 selection:text-white [scrollbar-color:#fde68a_transparent] dark:[scrollbar-color:#18181b_transparent];
+        @apply bg-amber-50 font-sans dark:bg-zinc-950 dark:text-white selection:bg-orange-500 selection:text-white;
     }
 
     body {
-        @apply mx-auto w-full p-4 leading-normal font-serif
+        @apply m-0 w-full leading-normal font-serif;
     }
 
     * {
-        @apply box-border
+        @apply box-border;
     }
 }
 
@@ -43,19 +63,17 @@
     /* Navigation styles */
 
     .nav-links a {
-        @apply relative mx-2 shrink-0 pt-2 mb-2 text-lg font-bold
-
+        @apply relative mx-2 shrink-0 pt-2 mb-2 text-lg font-bold inline-block;
     }
 
     .nav-links a.is-active::after {
         content: '';
         view-transition-name: nav-indicator;
         @apply absolute right-0 bottom-0 left-0 h-px bg-orange-500;
-
     }
 
     .nav-links {
-        @apply flex min-w-0 flex-1 items-center overflow-x-auto;
+        @apply items-center;
         scrollbar-width: none;
         -ms-overflow-style: none;
     }
@@ -66,17 +84,35 @@
 
     @media screen and (min-width: 636px) {
         .nav-links {
-            @apply ml-0.5 flex-none overflow-visible
+            @apply ml-0.5 flex-none overflow-visible;
         }
 
         .nav-links a {
-            @apply inline-block px-3
+            @apply inline-block px-3;
         }
-
     }
 
     a {
-        @apply no-underline
+        @apply no-underline;
     }
+}
 
+/* Transición Circular de Tema (View Transitions API) */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+    z-index: 9999;
+}
+
+::view-transition-old(root) {
+    z-index: 1;
+}
+
+::view-transition-image-pair(root) {
+    isolation: isolate;
 }

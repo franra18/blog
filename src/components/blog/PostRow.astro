@@ -1,36 +1,59 @@
 ---
 const { post } = Astro.props;
 const { title, description, pubDate, image } = post.data;
-const url = `/posts/${post.id}`
+const url = `/posts/${post.id}`;
 const href = `${import.meta.env.BASE_URL}${url.replace(/^\/+/, '')}`;
 const projectName: string | null = post.id.includes('/') ? post.id.split('/')[0] : null;
 const projectLabel = projectName?.split('-').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+
+const formattedDate = pubDate.toLocaleDateString('es-ES');
 ---
 
-<li class="group border-t border-zinc-700 transition-colors hover:bg-amber-100 dark:hover:bg-zinc-900">
-    <a href={href} class="flex flex-col gap-3 px-2 py-4 md:flex-row md:items-center md:gap-7 md:px-3">
-        <img src={image.url} alt={image.alt} class="aspect-video w-full rounded-md object-cover md:w-52 md:shrink-0" />
+<li class="group relative rounded-xl border border-zinc-200/70 bg-white/40 p-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-zinc-300 hover:bg-white hover:shadow-md dark:border-zinc-800/80 dark:bg-zinc-900/30 dark:hover:border-zinc-700 dark:hover:bg-zinc-900/70">
+    <a href={href} class="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-5">
+        <!-- Miniatura -->
+        <div class="relative aspect-video w-full overflow-hidden rounded-lg border border-zinc-200/90 bg-zinc-100 sm:w-52 sm:shrink-0 dark:border-zinc-800 dark:bg-zinc-900">
+            <img
+                src={image.url}
+                alt={image.alt}
+                class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
+            />
+        </div>
 
-        <div class="min-w-0 flex-1">
-            <p class="mb-1 text-xl text-black dark:text-white group-hover:text-orange-600 max-md:text-lg">
-                {title}
-            </p>
-
-            <p class="mb-2 line-clamp-2 text-sm text-zinc-500 dark:text-zinc-400">
-                {description}
-            </p>
-
-            <div class="flex items-center gap-3 text-xs text-zinc-500 dark:text-zinc-400">
-                <time datetime={pubDate.toISOString()}>{pubDate.toLocaleDateString('es-ES')}</time>
+        <!-- Bloque de contenido ordenado y compacto -->
+        <div class="flex min-w-0 flex-1 flex-col">
+            <!-- Fecha y Chip -->
+            <div class="mb-1.5 flex flex-wrap items-center gap-2">
+                <time
+                    datetime={pubDate.toISOString()}
+                    class="font-mono text-[11px] text-zinc-500 dark:text-zinc-500"
+                >
+                    {formattedDate}
+                </time>
 
                 {projectName && (
-                    <span class="rounded-full bg-orange-500 px-2 py-0.5 font-mono font-bold text-amber-100 dark:text-zinc-900">
+                    <span class="inline-flex items-center gap-1.5 rounded-full border border-zinc-300/70 bg-zinc-100/60 px-2 py-0.5 font-mono text-[10px] font-medium text-zinc-600 dark:border-zinc-700/60 dark:bg-zinc-800/50 dark:text-zinc-400">
+                        <span class="h-1 w-1 rounded-full bg-zinc-400 dark:bg-zinc-500"></span>
                         {projectLabel}
                     </span>
                 )}
             </div>
+
+            <!-- Título -->
+            <h3 class="text-base font-bold leading-snug tracking-tight text-zinc-900 transition-colors group-hover:text-orange-600 sm:text-lg dark:text-zinc-100 dark:group-hover:text-orange-400">
+                {title}
+            </h3>
+
+            <!-- Descripción ceñida al bloque -->
+            <p class="mt-1 line-clamp-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                {description}
+            </p>
         </div>
 
-        <span aria-hidden="true" class="self-end text-xl text-zinc-400 transition-transform group-hover:translate-x-1 md:shrink-0 md:self-auto">&rarr;</span>
+        <!-- Flecha anclada a la esquina superior derecha -->
+        <div class="hidden shrink-0 pt-0.5 text-zinc-400 transition-transform group-hover:translate-x-1 group-hover:text-orange-600 sm:flex dark:text-zinc-600 dark:group-hover:text-orange-400">
+            <span class="font-mono text-base font-semibold">→</span>
+        </div>
     </a>
 </li>

@@ -1,18 +1,21 @@
 ---
 const socials = [
-    { platform: 'GitHub', placeholder: 'franra18', url:'https://github.com/franra18' },
-    { platform: 'LinkedIn', placeholder: 'Francisco Ramírez Cañadas', url:'https://www.linkedin.com/in/francisco-ramirez-canadas' },
-    { platform: 'Gmail', placeholder: 'franciscoramirezcanadas@gmail.com', url:'mailto:franciscoramirezcanadas@gmail.com' }
+  { platform: 'github', url: 'https://github.com/franra18' },
+  { platform: 'linkedin', url: 'https://www.linkedin.com/in/francisco-ramirez-canadas' },
+  { platform: 'email', url: 'mailto:franciscoramirezcanadas@gmail.com' }
 ];
 ---
 
-<div class="flex gap-4">
-	{socials.map((social) => (
-		<a class="border-black border bg-white p-2 size-10 xs:size-12 flex items-center justify-center rounded-full hover:scale-110 transition-transform animate-slide-up-fade" target="_blank" rel="noopener noreferrer"
-            href={social.url} aria-label={social.platform} title={`${social.platform} | ${social.placeholder}`}>
-            <svg>
-                <use href={`${import.meta.env.BASE_URL}assets/sprite.svg#${social.platform}`} />
-            </svg>
-        </a>
-	))}
+<div class="flex items-center gap-3 font-mono text-xs">
+  {socials.map((social) => (
+    <a
+      href={social.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-zinc-500 transition-colors hover:text-orange-600 dark:text-zinc-400 dark:hover:text-orange-400"
+    >
+      <span>{social.platform}</span>
+      <span class="text-zinc-400 dark:text-zinc-600">↗</span>
+    </a>
+  ))}
 </div>

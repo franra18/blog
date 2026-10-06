@@ -3,12 +3,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/home/Hero.astro';
 import FeaturedProjects from '../components/home/FeaturedProjects.astro';
 import RecentPosts from '../components/home/RecentPosts.astro';
+import TechRibbon from '../components/home/TechRibbon.astro';
+import Timeline from '../components/home/Timeline.astro';
 
 const pageTitle = "Inicio";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
 	<Hero />
-	<FeaturedProjects />
-	<RecentPosts />
+	<TechRibbon/>
+
+	<div class="mx-40 max-md:mx-5">
+		<Timeline/>
+		<FeaturedProjects />
+		<RecentPosts />
+	</div>
 </BaseLayout>
