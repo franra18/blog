@@ -1,5 +1,11 @@
 <button id="themeToggle" aria-label="Toggle theme" class="cursor-pointer">
-  <svg aria-hidden="true" width="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <svg 
+    aria-hidden="true" 
+    width="30px" 
+    height="30px"
+    viewBox="0 0 24 24"
+    class="fill-current text-neutral-900 dark:text-neutral-100"
+  >
     <use class="sun" href={`${import.meta.env.BASE_URL}assets/sprite.svg#sun`} />
     <use class="moon" href={`${import.meta.env.BASE_URL}assets/sprite.svg#moon`} />
   </svg>
@@ -10,11 +16,11 @@
     border: 0;
     background: none;
   }
-  .sun { color: black; }
-  .moon { color: transparent; }
+  .sun {display: inline;}
+  .moon {display: none;}
 
-  :global(.dark) .sun { color: transparent; }
-  :global(.dark) .moon { color: white; }
+  :global(.dark) .sun {display: none;}
+  :global(.dark) .moon {display: inline;}
 </style>
 
 <script>
