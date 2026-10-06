@@ -2,19 +2,31 @@
 import { getCollection } from 'astro:content';
 import PostRow from '../blog/PostRow.astro';
 
-const recentPosts = (await getCollection('blog'))
-	.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
-	.slice(0, 3);
+const allPosts = await getCollection('blog');
+const recentPosts = allPosts
+    .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+    .slice(0, 3);
 ---
 
 <section>
     <div class="mt-20">
-        <div class="flex justify-between items-baseline max-lg:mx-auto">
-            <h2 class="text-3xl">Últimos artículos</h2>
-            <a href={`${import.meta.env.BASE_URL}posts`} class="text-zinc-500 hover:text-orange-500 font-mono text-sm">
-            ver todos →
+        <div class="mb-6 flex items-baseline justify-between max-lg:mx-auto">
+            <h2 class="text-3xl font-bold">Últimos artículos</h2>
+
+            <a
+                href={`${import.meta.env.BASE_URL}posts`}
+                class="group inline-flex items-center gap-2 rounded-full border border-zinc-200/90 bg-white/70 px-3.5 py-1.5 font-sans text-xs font-medium tracking-wide text-zinc-700 shadow-sm backdrop-blur-md transition-all hover:border-zinc-300 hover:bg-white hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900/80 dark:text-zinc-300 dark:shadow-none dark:hover:border-zinc-700 dark:hover:bg-zinc-800 dark:hover:text-white"
+            >
+                <span>Ver todos</span>
+                <span class="rounded-full bg-zinc-100 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 transition-colors group-hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-400 dark:group-hover:bg-zinc-700 dark:group-hover:text-zinc-200">
+                    {allPosts.length}
+                </span>
+                <span class="text-zinc-400 transition-transform duration-150 group-hover:translate-x-0.5 group-hover:text-orange-500 dark:text-zinc-500 dark:group-hover:text-orange-400">
+                    &rarr;
+                </span>
             </a>
         </div>
+
         <ul class="p-0 m-0 list-none mx-40 space-y-3 max-lg:mx-auto">
             {recentPosts.map((post) => (
                 <PostRow post={post}/>
@@ -22,4 +34,3 @@ const recentPosts = (await getCollection('blog'))
         </ul>
     </div>
 </section>
-

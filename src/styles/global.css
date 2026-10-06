@@ -1,9 +1,34 @@
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities);
 
+/* Scrollbar personalizado sin flechas */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #fde68a;
+    border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background-color: #18181b;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
 @layer base {
     html {
-        @apply bg-amber-50 font-sans dark:bg-zinc-950 dark:text-white selection:bg-orange-500 selection:text-white [scrollbar-color:#fde68a_transparent] dark:[scrollbar-color:#18181b_transparent];
+        @apply bg-amber-50 font-sans dark:bg-zinc-950 dark:text-white selection:bg-orange-500 selection:text-white;
     }
 
     body {
