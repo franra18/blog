@@ -52,14 +52,3 @@ pnpm dev
 
 4. Navigate to [http://localhost:4321](http://localhost:4321) in your browser.
 
----
-
-## 📦 Available Scripts
-
-| Command | Description |
-| --- | --- |
-| `pnpm dev` | Starts local development server at `localhost:4321` |
-| `pnpm build` | Compiles and builds production site to `./dist` |
-| `pnpm preview` | Previews production build locally |
-
----
