@@ -2,7 +2,17 @@
 import ProgressBar from '../components/ui/ProgressBar.astro';
 import PostNavigation from '../components/blog/PostNavigation.astro';
 import BaseLayout from './BaseLayout.astro';
-const { frontmatter, previousPost, nextPost } = Astro.props;
+
+const { post, frontmatter, previousPost, nextPost } = Astro.props;
+
+const projectName: string | null = post.id.includes('/') ? post.id.split('/')[0] : null;
+const projectLabel = projectName?.split('-').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+
+const projectUrl = projectName
+  ? `${import.meta.env.BASE_URL.replace(/\/$/, '')}/projects/${projectName}`
+  : null;
+
+const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString('es-ES', {year: 'numeric', month: 'long', day: 'numeric',});
 ---
 
 <BaseLayout
@@ -13,17 +23,80 @@ const { frontmatter, previousPost, nextPost } = Astro.props;
   publishedTime={frontmatter.pubDate}
   hideHeaderOnScroll
 >
-  <ProgressBar/>
-  <div class="mx-auto max-w-prose">
-    <h1>{frontmatter.title}</h1>
-    <p>Publicado el {frontmatter.pubDate.toLocaleDateString('es-ES')}</p>
-    <!-- <p><em>{frontmatter.description}</em></p> --> <!-- Descripción del post (de momento oculta) -->
-    <img src={frontmatter.image.url} width="100%" alt={frontmatter.image.alt} />
-    <p>Francisco Ramírez Cañadas</p>
-    <article class="[&_a]:text-orange-500 [&_a]:hover:text-orange-700 [&_a]:hover:underline!">
-      <slot /> <!-- MUY IMPORTANTE -->
-    </article>
+  <ProgressBar />
 
+  <article class="mx-auto max-w-3xl px-4 pt-12 md:pt-16">
+    <!-- Barra superior de navegación y etiqueta -->
+    <div class="mb-6 flex items-center justify-between">
+      <a
+        href={`${import.meta.env.BASE_URL}posts`}
+        class="inline-flex items-center gap-2 font-mono text-xs text-zinc-400! no-underline transition-colors hover:text-orange-500!"
+      >
+        <span class="inline-flex items-center leading-none text-base">&larr;</span>
+        <span class="leading-none">Volver a Artículos</span>
+      </a>
+
+      {projectName && (
+        <a
+          href={projectUrl}
+          class="group inline-flex items-center gap-2 rounded-full border border-zinc-200/90 bg-white/70 px-3 py-1 font-mono text-[11px] font-medium text-zinc-700! shadow-sm backdrop-blur-md transition-all hover:border-zinc-300 hover:bg-white hover:text-orange-600! dark:border-zinc-800 dark:bg-zinc-900/80 dark:text-zinc-300! dark:shadow-none dark:hover:border-zinc-700 dark:hover:bg-zinc-800 dark:hover:text-orange-400!"
+        >
+          <span class="h-1.5 w-1.5 rounded-full bg-orange-500"></span>
+          <span>{projectLabel}</span>
+        </a>
+      )}
+    </div>
+
+    <!-- Título y metadatos -->
+    <header class="space-y-4">
+      <h1 class="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl dark:text-zinc-100">
+        {frontmatter.title}
+      </h1>
+
+      {frontmatter.description && (
+        <p class="text-lg leading-relaxed text-zinc-600 font-sans dark:text-zinc-400">
+          {frontmatter.description}
+        </p>
+      )}
+
+      <div class="flex items-center gap-3 pt-2 text-xs font-medium text-zinc-500 dark:text-zinc-400">
+        <div class="flex items-center gap-2">
+          <div class="h-6 w-6 rounded-full bg-linear-to-tr from-orange-500 to-amber-300 ring-1 ring-white dark:ring-zinc-800" />
+          <span class="font-sans text-zinc-700 dark:text-zinc-300">Francisco Ramírez Cañadas</span>
+        </div>
+        <span>&bull;</span>
+        <time datetime={new Date(frontmatter.pubDate).toISOString()} class="font-mono">
+          {formattedDate}
+        </time>
+      </div>
+    </header>
+
+    <!-- Imagen -->
+    {frontmatter.image && (
+      <div class="relative my-10 p-2">
+        <!-- Marcas de esquina técnicas -->
+        <span class="absolute left-0 top-0 h-2 w-2 border-l border-t border-zinc-400 dark:border-zinc-600"></span>
+        <span class="absolute right-0 top-0 h-2 w-2 border-r border-t border-zinc-400 dark:border-zinc-600"></span>
+        <span class="absolute bottom-0 left-0 h-2 w-2 border-b border-l border-zinc-400 dark:border-zinc-600"></span>
+        <span class="absolute bottom-0 right-0 h-2 w-2 border-b border-r border-zinc-400 dark:border-zinc-600"></span>
+
+        <div class="overflow-hidden rounded-lg border border-zinc-200/80 dark:border-zinc-800">
+          <img
+            src={frontmatter.image.url}
+            alt={frontmatter.image.alt || frontmatter.title}
+            class="aspect-video w-full object-cover"
+            loading="eager"
+          />
+        </div>
+      </div>
+    )}
+
+    <!-- Cuerpo Markdown -->
+    <div class="[&_a]:text-orange-500 [&_a]:hover:text-orange-700 [&_a]:hover:underline!">
+      <slot />
+    </div>
+
+    <hr class="my-12 border-zinc-200 dark:border-zinc-800" />
     <PostNavigation previousPost={previousPost} nextPost={nextPost} />
-  </div>
+  </article>
 </BaseLayout>
