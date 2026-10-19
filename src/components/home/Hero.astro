@@ -3,17 +3,27 @@ const fondoClaro = `${import.meta.env.BASE_URL}assets/fondo-prueba-3.webp`;
 const fondoOscuro = `${import.meta.env.BASE_URL}assets/fondo-prueba-2.webp`;
 ---
 
-<section class="relative -mt-16 flex h-dvh w-full flex-col items-start justify-center bg-(image:--hero-bg-light) bg-cover bg-bottom bg-no-repeat dark:bg-(image:--hero-bg-dark)"
+<section class="relative -mt-16 flex w-full flex-col lg:h-dvh lg:justify-center lg:bg-(image:--hero-bg-light) lg:bg-cover lg:bg-bottom lg:bg-no-repeat lg:dark:bg-(image:--hero-bg-dark)"
     style={`--hero-bg-light: url(${fondoClaro}); --hero-bg-dark: url(${fondoOscuro});`}>
-    <div class="relative max-w-lg mx-5 p-5 rounded-4xl dark:max-md:bg-black/50 max-md:bg-white/50">
-        <h1 class="mb-5 mt-0 text-left text-6xl font-bold max-md:text-5xl">
-            Construyo cosas con sentido
-        </h1>
-        <p class="mt-0 text-xl">
-            Ingeniero de software - Me enfoco en resolver problemas reales con código limpio, bien pensado y escalable.
-        </p>
-        <a class="py-3 px-4 bg-orange-500 rounded-full no-underline text-inherit font-bold inline-block hover:scale-105 transition-transform" href=`${import.meta.env.BASE_URL}assets/CV_Francisco_Ramirez_Canadas_ES.pdf` target="_blank" rel="noopener noreferrer">
-            Ver currículum
-        </a>
+    <!-- Hasta lg la foto va arriba a sangre, por detrás de la navegación, y se funde con el fondo -->
+    <div class="relative h-[62svh] w-full bg-(image:--hero-bg-light) bg-cover bg-position-[69%_center] bg-no-repeat dark:bg-(image:--hero-bg-dark) lg:hidden" role="img" aria-label="Retrato de Francisco Ramírez">
+        <div class="absolute inset-x-0 bottom-0 h-2/5 bg-linear-to-b from-transparent to-amber-50 dark:to-zinc-950"></div>
     </div>
+
+    <div class="relative z-10 mx-auto -mt-12 w-full max-w-5xl px-5 pb-12 lg:mt-0 lg:pb-0">
+        <div class="max-w-xl lg:max-w-md">
+            <h1 class="mb-5 mt-0 text-left text-5xl font-bold leading-[1.05] md:text-6xl lg:text-7xl">
+                Construyo cosas con sentido
+            </h1>
+            <p class="mt-0 text-xl">
+                Ingeniero de software - Me enfoco en resolver problemas reales con código limpio, bien pensado y escalable.
+            </p>
+            <a class="py-3 px-4 bg-orange-500 rounded-full no-underline text-inherit font-bold inline-block hover:scale-105 transition-transform" href=`${import.meta.env.BASE_URL}assets/CV_Francisco_Ramirez_Canadas_ES.pdf` target="_blank" rel="noopener noreferrer">
+                Ver currículum
+            </a>
+        </div>
+    </div>
+
+    <!-- Funde el borde inferior de la foto con el fondo de la página -->
+    <div class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-linear-to-b from-transparent to-amber-50 max-lg:hidden dark:to-zinc-950"></div>
 </section>
