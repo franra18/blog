@@ -28,3 +28,6 @@ pnpm-debug.log*
 .vscode/
 AGENTS.md
 tareas.md
+
+# Capturas del MCP de Playwright
+.playwright-mcp/
