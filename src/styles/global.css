@@ -97,6 +97,14 @@
     }
 }
 
+/* Bloques de código generados por Shiki en los artículos */
+.astro-code {
+    padding: 1rem 1.25rem;
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
 /* Transición Circular de Tema (View Transitions API) */
 
 ::view-transition-old(root),
