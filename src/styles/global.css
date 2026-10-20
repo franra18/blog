@@ -1,6 +1,11 @@
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities);
 
+@theme {
+    /* Superficie de las tarjetas de proyecto, un punto más cálida que el fondo amber-50 */
+    --color-paper: #faf6ed;
+}
+
 /* Scrollbar personalizado sin flechas */
 ::-webkit-scrollbar {
     width: 6px;
@@ -12,12 +17,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #fde68a;
+    background-color: var(--color-amber-200);
     border-radius: 9999px;
 }
 
 .dark ::-webkit-scrollbar-thumb {
-    background-color: #18181b;
+    background-color: var(--color-zinc-900);
 }
 
 ::-webkit-scrollbar-button {
@@ -49,6 +54,17 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Amplía la zona táctil a 44px de alto sin cambiar el aspecto del enlace */
+@utility tap-target {
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: min(0px, calc((100% - 44px) / 2)) 0;
+    }
+}
+
 @view-transition {
     navigation: auto;
 }
@@ -63,7 +79,7 @@
     /* Navigation styles */
 
     .nav-links a {
-        @apply relative mx-2 shrink-0 pt-2 mb-2 text-lg font-bold inline-block;
+        @apply tap-target mx-2 shrink-0 pt-2 mb-2 text-lg font-bold inline-block;
     }
 
     .nav-links a.is-active::after {
@@ -73,13 +89,20 @@
     }
 
     .nav-links {
-        @apply items-center;
+        @apply flex min-w-0 items-center overflow-x-auto;
         scrollbar-width: none;
         -ms-overflow-style: none;
     }
 
     .nav-links::-webkit-scrollbar {
         display: none;
+    }
+
+    /* En móviles estrechos la fila no cabe a text-lg: se compacta en vez de partirse en dos */
+    @media screen and (max-width: 399px) {
+        .nav-links a {
+            @apply mx-1.5 text-base;
+        }
     }
 
     @media screen and (min-width: 636px) {
@@ -95,6 +118,130 @@
     a {
         @apply no-underline;
     }
+}
+
+/* Cuerpo de los artículos: sin preflight, todo lo demás serían estilos del navegador */
+.prose {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--color-zinc-800);
+    /* Rutas como import.meta.env.BASE_URL no tienen huecos donde partir la línea */
+    overflow-wrap: break-word;
+}
+
+.dark .prose {
+    color: var(--color-zinc-300);
+}
+
+.prose > :where(p, ul, ol, blockquote, h2, h3, h4) {
+    /* ~70 caracteres por línea; en Georgia el "ch" es más ancho que la letra media */
+    max-width: 34em;
+}
+
+.prose :where(p, ul, ol, blockquote, pre) {
+    margin-block: 0 1.25em;
+}
+
+.prose :where(h2, h3, h4) {
+    color: var(--color-zinc-900);
+    line-height: 1.25;
+    text-wrap: balance;
+    margin-block: 2.25em 0.6em;
+}
+
+.dark .prose :where(h2, h3, h4) {
+    color: var(--color-zinc-100);
+}
+
+.prose h2 {
+    font-size: 1.6rem;
+}
+
+.prose h3 {
+    font-size: 1.3rem;
+}
+
+.prose :where(ul, ol) {
+    padding-left: 1.4em;
+}
+
+.prose li + li {
+    margin-top: 0.35em;
+}
+
+.prose li::marker {
+    color: var(--color-orange-700);
+}
+
+.dark .prose li::marker {
+    color: var(--color-orange-400);
+}
+
+.prose blockquote {
+    margin-inline: 0;
+    padding-left: 1em;
+    border-left: 1px solid var(--color-zinc-300);
+    font-style: italic;
+    color: var(--color-zinc-600);
+}
+
+.dark .prose blockquote {
+    border-color: var(--color-zinc-700);
+    color: var(--color-zinc-400);
+}
+
+.prose a {
+    color: var(--color-orange-800);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+}
+
+.prose a:hover {
+    text-decoration-thickness: 2px;
+}
+
+.dark .prose a {
+    color: var(--color-orange-400);
+}
+
+.prose :not(pre) > code {
+    font-size: 0.85em;
+    padding: 0.1em 0.35em;
+    border-radius: 0.3em;
+    background: var(--color-zinc-200);
+}
+
+.dark .prose :not(pre) > code {
+    background: var(--color-zinc-800);
+}
+
+.prose hr {
+    margin-block: 2.5em;
+    border: 0;
+    border-top: 1px solid var(--color-zinc-200);
+}
+
+.dark .prose hr {
+    border-color: var(--color-zinc-800);
+}
+
+:focus-visible {
+    outline: 2px solid var(--color-orange-700);
+    outline-offset: 3px;
+    border-radius: 0.25rem;
+}
+
+.dark :focus-visible {
+    outline-color: var(--color-orange-400);
+}
+
+h1, h2, h3 {
+    text-wrap: balance;
+}
+
+p, li {
+    text-wrap: pretty;
 }
 
 /* Bloques de código generados por Shiki en los artículos */

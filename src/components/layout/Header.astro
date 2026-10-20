@@ -7,7 +7,7 @@ const { hideOnScroll } = Astro.props;
 <header id="site-header" class:list={['site-header pb-4 pointer-events-none', { 'hide-on-scroll': hideOnScroll }]}>
     <nav>
         <div class="nav-shell relative flex items-center justify-center gap-1 pointer-events-auto sm:gap-3">
-            <a href={import.meta.env.BASE_URL} class="py-2 font-mono text-sm font-bold text-orange-600 dark:text-orange-400" aria-label="Francisco Ramírez, inicio">
+            <a href={import.meta.env.BASE_URL} class="tap-target py-2 font-mono text-sm font-bold text-orange-700 dark:text-orange-400" aria-label="Francisco Ramírez, inicio">
                 <span class="sm:hidden">FR</span>
                 <span class="max-sm:hidden">francisco.ramírez</span>
             </a>
@@ -29,8 +29,14 @@ const { hideOnScroll } = Astro.props;
         transition: transform 200ms ease-in-out;
     }
 
-    .site-header.hide-on-scroll.is-hidden {
+    .site-header.hide-on-scroll.is-hidden:not(:focus-within) {
         transform: translateY(calc(-100% - 1rem));
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .site-header.hide-on-scroll {
+            transition: none;
+        }
     }
 
     .nav-shell {
@@ -49,13 +55,13 @@ const { hideOnScroll } = Astro.props;
 
     .site-header.is-scrolled .nav-shell {
         padding: 0.25rem 0.75rem;
-        border-color: rgb(113 113 122 / 0.45);
-        background-color: rgb(255 251 235 / 0.9);
+        border-color: color-mix(in srgb, var(--color-zinc-500) 45%, transparent);
+        background-color: color-mix(in srgb, var(--color-amber-50) 90%, transparent);
         backdrop-filter: blur(8px);
     }
 
     :global(.dark) .site-header.is-scrolled .nav-shell {
-        background-color: rgb(9 9 11 / 0.9);
+        background-color: color-mix(in srgb, var(--color-zinc-950) 90%, transparent);
     }
 </style>
 
