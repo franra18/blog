@@ -1,0 +1,23 @@
+---
+const { github, demo, class: className } = Astro.props;
+const links = [
+    { label: 'GitHub', url: github },
+    { label: 'Demo', url: demo },
+].filter((link) => link.url);
+---
+
+{links.length > 0 && (
+    <div class:list={['flex flex-wrap items-center gap-2', className]}>
+        {links.map(({ label, url }) => (
+            <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="tap-target inline-flex items-center gap-1.5 rounded-md border border-zinc-300/80 bg-white px-2.5 py-1 font-mono text-xs font-semibold text-zinc-800 shadow-sm transition hover:border-orange-400 hover:text-orange-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-zinc-600 dark:hover:text-orange-400"
+            >
+                <span>{label}</span>
+                <span class="text-xs text-zinc-500">↗</span>
+            </a>
+        ))}
+    </div>
+)}
