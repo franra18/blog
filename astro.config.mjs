@@ -12,6 +12,8 @@ export default defineConfig({
   base: '/blog/',
   integrations: [preact()],
   markdown: {
+    // github-dark por defecto deja los comentarios en 3:1; esta variante pasa AA
+    shikiConfig: { theme: 'github-dark-default' },
     rehypePlugins: [[rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }]],
   },
   vite: {
