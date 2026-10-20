@@ -1,5 +1,6 @@
 ---
-const { post } = Astro.props;
+const { post, headingLevel = 3 } = Astro.props;
+const Heading = `h${headingLevel}`;
 const { title, description, pubDate, image } = post.data;
 const url = `/posts/${post.id}`;
 const href = `${import.meta.env.BASE_URL}${url.replace(/^\/+/, '')}`;
@@ -41,9 +42,9 @@ const formattedDate = pubDate.toLocaleDateString('es-ES');
             </div>
 
             <!-- Título -->
-            <h3 class="text-base font-bold leading-snug tracking-tight text-zinc-900 transition-colors group-hover:text-orange-600 sm:text-lg dark:text-zinc-100 dark:group-hover:text-orange-400">
+            <Heading class="text-base font-bold leading-snug tracking-tight text-zinc-900 transition-colors group-hover:text-orange-700 sm:text-lg dark:text-zinc-100 dark:group-hover:text-orange-400">
                 {title}
-            </h3>
+            </Heading>
 
             <!-- Descripción ceñida al bloque -->
             <p class="mt-1 line-clamp-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
@@ -52,7 +53,7 @@ const formattedDate = pubDate.toLocaleDateString('es-ES');
         </div>
 
         <!-- Flecha anclada a la esquina superior derecha -->
-        <div class="hidden shrink-0 pt-0.5 text-zinc-400 transition-transform group-hover:translate-x-1 group-hover:text-orange-600 sm:flex dark:text-zinc-600 dark:group-hover:text-orange-400">
+        <div class="hidden shrink-0 pt-0.5 text-zinc-500 transition-transform group-hover:translate-x-1 group-hover:text-orange-700 sm:flex dark:text-zinc-400 dark:group-hover:text-orange-400">
             <span class="font-mono text-base font-semibold">→</span>
         </div>
     </a>

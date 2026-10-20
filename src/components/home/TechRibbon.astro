@@ -17,13 +17,18 @@ const technologies = [
 const ribbonTechnologies = [...technologies, ...technologies];
 ---
 
-<section class="group relative w-full overflow-hidden border-y border-zinc-700/30 before:pointer-events-none before:absolute before:inset-y-0 before:inset-s-0 before:z-10 before:h-full before:w-16 before:bg-[linear-gradient(to_right,rgb(255_251_235),transparent)] after:pointer-events-none after:absolute after:inset-y-0 after:inset-e-0 after:z-10 after:h-full after:w-16 after:bg-[linear-gradient(to_left,rgb(255_251_235),transparent)] dark:before:bg-[linear-gradient(to_right,rgb(9_9_11),transparent)] dark:after:bg-[linear-gradient(to_left,rgb(9_9_11),transparent)]" aria-label="Tecnologías que uso">
-    <div class="flex w-max items-center animate-[tech-ribbon-scroll_42s_linear_infinite] group-hover:[animation-play-state:paused] motion-reduce:animate-none">
-        {[false, true].map((isDuplicate) => (
-            <div class="flex shrink-0 items-center" aria-hidden={isDuplicate}>
+<section class="group relative w-full overflow-hidden border-y border-zinc-700/30 before:pointer-events-none before:absolute before:inset-y-0 before:inset-s-0 before:z-10 before:h-full before:w-16 before:bg-linear-to-r before:from-amber-50 after:pointer-events-none after:absolute after:inset-y-0 after:inset-e-0 after:z-10 after:h-full after:w-16 after:bg-linear-to-l after:from-amber-50 dark:before:from-zinc-950 dark:after:from-zinc-950" aria-label="Tecnologías que uso">
+    <ul class="sr-only">
+        {technologies.map(({ icon }) => <li>{icon}</li>)}
+    </ul>
+
+    <!-- Copias puramente visuales para el bucle; los lectores de pantalla leen la lista de arriba -->
+    <div class="flex w-max items-center animate-[tech-ribbon-scroll_42s_linear_infinite] group-hover:[animation-play-state:paused] motion-reduce:animate-none" aria-hidden="true">
+        {[false, true].map(() => (
+            <div class="flex shrink-0 items-center">
                 {ribbonTechnologies.map(({ icon, viewBox = '0 0 64 64', themeLogo = false }) => (
                     <div class="flex h-24 w-24 shrink-0 items-center justify-center sm:h-28 sm:w-28" title={icon}>
-                        <svg viewBox={viewBox} class:list={{ 'size-10 transition-transform duration-150 hover:scale-[1.15] motion-reduce:transition-none motion-reduce:hover:scale-100': true, 'brightness-0 dark:brightness-0 dark:invert': !themeLogo, 'dark:invert': themeLogo }} role="img" aria-label={icon}>
+                        <svg viewBox={viewBox} class:list={{ 'size-10 transition-transform duration-150 hover:scale-[1.15] motion-reduce:transition-none motion-reduce:hover:scale-100': true, 'brightness-0 dark:brightness-0 dark:invert': !themeLogo, 'dark:invert': themeLogo }}>
                             <use href={`${import.meta.env.BASE_URL}assets/sprite.svg#${icon}`} />
                         </svg>
                     </div>

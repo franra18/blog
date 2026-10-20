@@ -1,17 +1,23 @@
 ---
 ---
 
-<div id="scroll-progress" class="fixed top-0 left-0 z-50 h-1 bg-orange-500"></div>
+<div id="scroll-progress" class="fixed top-0 left-0 z-50 h-1 w-full origin-left bg-orange-500" style="transform: scaleX(0)" aria-hidden="true"></div>
 
 <script>
-    window.addEventListener("scroll", function () {
-        const progressBar = document.getElementById("scroll-progress");
-        if(!progressBar) return;
+    const progressBar = document.getElementById("scroll-progress");
+    let ticking = false;
 
+    // scaleX en vez de width: no fuerza layout en cada evento de scroll
+    const update = () => {
         const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrolled = window.scrollY;        
-        const progress = (scrolled / scrollableHeight) * 100;
-        
-        progressBar.style.width = progress + "%";
-    });
+        const progress = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 0;
+        progressBar?.style.setProperty("transform", `scaleX(${progress})`);
+        ticking = false;
+    };
+
+    window.addEventListener("scroll", () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(update);
+    }, { passive: true });
 </script>

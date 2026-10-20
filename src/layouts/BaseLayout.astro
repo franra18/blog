@@ -18,7 +18,7 @@ const pageUrl = Astro.url.href;
 const imageUrl = new URL(image.url, Astro.url).href;
 ---
 
-<html lang="es" class="scroll-smooth">
+<html lang="es" class="motion-safe:scroll-smooth">
 	<head>
 		<script is:inline>
 			const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
@@ -43,7 +43,9 @@ const imageUrl = new URL(image.url, Astro.url).href;
 	</head>
 	<body>
 		<Header hideOnScroll={hideHeaderOnScroll} />
-        <slot /> <!-- slots allow you to inject child content written between the opening and closing tags of the layout -->
+		<main id="main">
+			<slot /> <!-- slots allow you to inject child content written between the opening and closing tags of the layout -->
+		</main>
 		<Footer />
 	</body>
 </html>

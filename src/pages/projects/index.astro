@@ -8,12 +8,12 @@ const pageTitle = "Proyectos";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <div class="mx-auto max-w-7xl mt-15 max-md:mx-4">
-    <h1>Proyectos</h1>
-  </div>
-  <div class="mx-auto grid max-w-7xl grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 max-md:mx-4">
-    {allProjects.map((project: any) => (
-      <ProjectCard project={project}/>
-    ))}
+  <div class="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6">
+    <h1 class="mb-8 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-100">Proyectos</h1>
+    <div class="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
+      {allProjects.map((project: any) => (
+        <ProjectCard project={project}/>
+      ))}
+    </div>
   </div>
 </BaseLayout>
